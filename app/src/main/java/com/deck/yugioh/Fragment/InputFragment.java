@@ -15,6 +15,8 @@ import com.deck.yugioh.R;
 
 public class InputFragment extends Fragment {
 
+    public InputFragment() {}
+
     private TextView label;
     private EditText input;
 
@@ -28,14 +30,12 @@ public class InputFragment extends Fragment {
         this.label = view.findViewById(R.id.customLabel);
 
         this.label.setText(getArguments().getString("label"));
+        this.input.setHint(getArguments().getString("placeholder"));
 
         return view;
 
     }
 
-    public InputFragment() {
-        // Required empty public constructor
-    }
 
 
 }
