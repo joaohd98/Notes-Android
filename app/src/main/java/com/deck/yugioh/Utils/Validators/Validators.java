@@ -8,7 +8,7 @@ public class Validators {
 
     private static boolean required(String text) {
 
-        return text.isEmpty();
+        return !text.isEmpty();
 
     }
 

@@ -1,6 +1,11 @@
 package com.deck.yugioh.Fragment;
 
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.Helpers.Helpers;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.deck.yugioh.Utils.Validators.Validators;
 
@@ -47,9 +53,12 @@ public class InputFragment extends Fragment {
         this.input.addTextChangedListener(this.textChangedListener());
         this.input.setOnFocusChangeListener(this.focusChangeListener());
 
+        this.setBorder(R.color.colorAccent);
+
         return view;
 
     }
+
 
     public void setContent(Bundle savedInstanceState) {
 
@@ -106,14 +115,12 @@ public class InputFragment extends Fragment {
 
     private void checkValidation() {
 
-        int color = this.focus ? R.color.colorWarning : R.color.colorDanger;
-
         boolean isValid = true;
         String message = "";
 
         for(ValidatorModel rule: this.rules) {
 
-            isValid = Validators.isValid(rule.getRule(), rule.getMessage());
+            isValid = Validators.isValid(rule.getRule(), this.input.getText().toString());
 
             if(!isValid) {
 
@@ -125,22 +132,26 @@ public class InputFragment extends Fragment {
         }
 
         this.isValid = isValid;
+
+        int color = this.isValid ? R.color.colorSuccess : this.focus ? R.color.colorWarning : R.color.colorDanger;
+
         this.message.setText(message);
+        this.message.setTextColor(getResources().getColor(color));
 
-        if(isValid) {
+        this.setBorder(color);
 
-//            this.input.bor
+    }
 
-        }
+    private void setBorder(int color) {
 
-        else {
+        this.input.setBackground(null);
 
+        LayerDrawable bottomBorder = Helpers.getBorders(
+                getResources().getColor(R.color.colorBackground), getResources().getColor(color),
+                0, 0, 0, 4
+        );
 
-            this.message.setTextColor(getResources().getColor(color));
-
-        }
-
-
+        this.input.setBackground(bottomBorder);
 
     }
 
