@@ -1,13 +1,9 @@
 package com.deck.yugioh.Fragment;
 
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -15,9 +11,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Helpers.Helpers;
@@ -25,8 +21,6 @@ import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.deck.yugioh.Utils.Validators.Validators;
 
 import java.util.ArrayList;
-
-import javax.xml.validation.Validator;
 
 public class InputFragment extends Fragment {
 
@@ -58,7 +52,6 @@ public class InputFragment extends Fragment {
         return view;
 
     }
-
 
     public void setContent(Bundle savedInstanceState) {
 
