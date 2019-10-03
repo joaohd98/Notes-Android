@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- Validators -->
+    <string name="validators_required">required</string>
+    <string name="validators_email">email</string>
+    <string name="validators_min_length">min_length</string>
+    <string name="validators_max_length">max_length</string>
+
+</resources>

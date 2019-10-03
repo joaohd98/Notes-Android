@@ -7,6 +7,10 @@ import android.os.Bundle;
 
 import com.deck.yugioh.Fragment.InputFragment;
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.Validators.ValidatorModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,6 +38,13 @@ public class LoginActivity extends AppCompatActivity {
         bundle.putString("label", "Email");
         bundle.putString("placeholder", "Digite o seu email");
 
+        ArrayList<ValidatorModel> rules = new ArrayList<>();
+
+        rules.add(new ValidatorModel(R.string.validators_required, "Campo E-mail é obrigatório."));
+        rules.add(new ValidatorModel(R.string.validators_email, "E-mail inválido."));
+
+        bundle.putParcelableArrayList("rules", rules);
+
         this.emailFrag.setContent(bundle);
 
     }
@@ -44,6 +55,12 @@ public class LoginActivity extends AppCompatActivity {
 
         bundle.putString("label", "Senha");
         bundle.putString("placeholder", "Digite a sua senha");
+
+        ArrayList<ValidatorModel> rules = new ArrayList<>();
+
+        rules.add(new ValidatorModel(R.string.validators_required, "Campo senha é obrigatório."));
+
+        bundle.putParcelableArrayList("rules", rules);
 
         this.passwordFrag.setContent(bundle);
 
