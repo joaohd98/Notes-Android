@@ -7,11 +7,9 @@ import android.os.Bundle;
 
 import com.deck.yugioh.Fragment.InputFragment;
 import com.deck.yugioh.R;
-import com.deck.yugioh.Utils.Helpers.Helpers;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
