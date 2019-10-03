@@ -29,13 +29,20 @@ public class InputFragment extends Fragment {
         this.input = view.findViewById(R.id.customInput);
         this.label = view.findViewById(R.id.customLabel);
 
-        this.label.setText(getArguments().getString("label"));
-        this.input.setHint(getArguments().getString("placeholder"));
-
         return view;
 
     }
 
+    public void setContent(Bundle savedInstanceState) {
 
+
+        if(savedInstanceState != null) {
+
+            this.label.setText(savedInstanceState.getString("label"));
+            this.input.setHint(savedInstanceState.getString("placeholder"));
+
+        }
+
+    }
 
 }

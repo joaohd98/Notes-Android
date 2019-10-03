@@ -34,9 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         bundle.putString("label", "Email");
         bundle.putString("placeholder", "Digite o seu email");
 
-        this.emailFrag.setArguments(bundle);
-
-        this.fm.beginTransaction().replace(R.id.email_frag, this.emailFrag).commit();
+        this.emailFrag.setContent(bundle);
 
     }
 
@@ -47,10 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         bundle.putString("label", "Senha");
         bundle.putString("placeholder", "Digite a sua senha");
 
-        this.passwordFrag.setArguments(bundle);
-
-        this.fm.beginTransaction().replace(R.id.password_frag, this.passwordFrag).commit();
-
+        this.passwordFrag.setContent(bundle);
 
     }
 
