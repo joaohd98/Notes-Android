@@ -76,8 +76,7 @@ public class InputFragment extends Fragment {
 
             }
 
-            else
-                this.input.setInputType(InputType.TYPE_CLASS_TEXT | type);
+            this.input.setInputType(InputType.TYPE_CLASS_TEXT | type);
 
             this.input.setHint(savedInstanceState.getString("placeholder"));
             this.label.setText(savedInstanceState.getString("label"));
