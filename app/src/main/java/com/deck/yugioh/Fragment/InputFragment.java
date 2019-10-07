@@ -3,6 +3,7 @@ package com.deck.yugioh.Fragment;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -30,6 +31,14 @@ public class InputFragment extends Fragment {
 
     private boolean focus = false;
     private boolean isValid = false;
+
+    private @Nullable
+    InputFragmentCallBack inputFragmentCallBack;
+
+    public interface InputFragmentCallBack {
+        void onInput();
+    }
+
 
     private ArrayList<ValidatorModel> rules = new ArrayList<>();
 
@@ -60,7 +69,6 @@ public class InputFragment extends Fragment {
             this.input.setHint(savedInstanceState.getString("placeholder"));
 
             this.rules = savedInstanceState.getParcelableArrayList("rules");
-
 
         }
 
@@ -130,6 +138,9 @@ public class InputFragment extends Fragment {
 
         this.setBorder(color);
 
+        if (this.inputFragmentCallBack != null)
+            this.inputFragmentCallBack.onInput();
+        
     }
 
     private void setBorder(int color) {
@@ -149,4 +160,7 @@ public class InputFragment extends Fragment {
         return isValid;
     }
 
+    public void setFormValidCallback(@Nullable InputFragmentCallBack inputFragmentCallBack) {
+        this.inputFragmentCallBack = inputFragmentCallBack;
+    }
 }

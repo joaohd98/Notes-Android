@@ -35,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         this.setEmailField();
         this.setPasswordField();
         this.setSubmitBtn();
-
     }
 
     @Override
@@ -49,8 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setSubmitBtn() {
 
-        this.submitBtn.setAlpha(.5f);
-        this.submitBtn.setClickable(false);
+        this.isFormValid();
 
     }
 
@@ -67,6 +65,15 @@ public class LoginActivity extends AppCompatActivity {
         rules.add(new ValidatorModel(R.string.validators_email, "E-mail inválido."));
 
         bundle.putParcelableArrayList("rules", rules);
+
+        this.emailFrag.setFormValidCallback(new InputFragment.InputFragmentCallBack() {
+
+            @Override
+            public void onInput() {
+                isFormValid();
+            }
+
+        });
 
         this.emailFrag.setContent(bundle);
 
@@ -85,7 +92,34 @@ public class LoginActivity extends AppCompatActivity {
 
         bundle.putParcelableArrayList("rules", rules);
 
+        this.passwordFrag.setFormValidCallback(new InputFragment.InputFragmentCallBack() {
+
+            @Override
+            public void onInput() {
+                isFormValid();
+            }
+
+        });
+
         this.passwordFrag.setContent(bundle);
+
+    }
+
+    public void isFormValid() {
+
+        if(emailFrag.isValid() && passwordFrag.isValid()) {
+
+            this.submitBtn.setAlpha(1);
+            this.submitBtn.setClickable(true);
+
+        }
+
+        else {
+
+            this.submitBtn.setAlpha(.5f);
+            this.submitBtn.setClickable(false);
+
+        }
 
     }
 
