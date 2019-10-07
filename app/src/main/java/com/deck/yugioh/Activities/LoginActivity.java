@@ -48,12 +48,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void setSubmitBtn() {
-
-        this.isFormValid();
-
-    }
-
     private void setEmailField() {
 
         Bundle bundle = new Bundle();
@@ -106,6 +100,12 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         this.passwordFrag.setContent(bundle);
+
+    }
+
+    private void setSubmitBtn() {
+
+        this.isFormValid();
 
     }
 
