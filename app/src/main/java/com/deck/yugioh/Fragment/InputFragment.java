@@ -3,7 +3,6 @@ package com.deck.yugioh.Fragment;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -11,7 +10,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -32,6 +30,7 @@ public class InputFragment extends Fragment {
 
     private boolean focus = false;
     private boolean isValid = false;
+
     private ArrayList<ValidatorModel> rules = new ArrayList<>();
 
     @Override
@@ -96,13 +95,11 @@ public class InputFragment extends Fragment {
             public void onFocusChange(View view, boolean hasFocus) {
 
                 InputFragment.this.focus = hasFocus;
-
                 InputFragment.this.checkValidation();
 
             }
 
         };
-
 
     }
 
