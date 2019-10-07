@@ -1,5 +1,6 @@
 package com.deck.yugioh.Fragment;
 
+import android.graphics.Typeface;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 
@@ -7,7 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +42,6 @@ public class InputFragment extends Fragment {
         void onInput();
     }
 
-
     private ArrayList<ValidatorModel> rules = new ArrayList<>();
 
     @Override
@@ -65,8 +67,20 @@ public class InputFragment extends Fragment {
 
         if(savedInstanceState != null) {
 
-            this.label.setText(savedInstanceState.getString("label"));
+            int type = savedInstanceState.getInt("type");
+
+            if(type == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+
+                this.input.setTypeface(Typeface.DEFAULT);
+                this.input.setTransformationMethod(new PasswordTransformationMethod());
+
+            }
+
+            else
+                this.input.setInputType(InputType.TYPE_CLASS_TEXT | type);
+
             this.input.setHint(savedInstanceState.getString("placeholder"));
+            this.label.setText(savedInstanceState.getString("label"));
 
             this.rules = savedInstanceState.getParcelableArrayList("rules");
 
@@ -163,4 +177,5 @@ public class InputFragment extends Fragment {
     public void setFormValidCallback(@Nullable InputFragmentCallBack inputFragmentCallBack) {
         this.inputFragmentCallBack = inputFragmentCallBack;
     }
+
 }

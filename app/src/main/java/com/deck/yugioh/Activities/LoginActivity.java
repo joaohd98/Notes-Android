@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +18,10 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-    FragmentManager fm = getSupportFragmentManager();
-    InputFragment emailFrag;
-    InputFragment passwordFrag;
-    Button submitBtn;
+    private FragmentManager fm = getSupportFragmentManager();
+    private InputFragment emailFrag;
+    private InputFragment passwordFrag;
+    private Button submitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         this.setEmailField();
         this.setPasswordField();
         this.setSubmitBtn();
+
     }
 
     @Override
@@ -58,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
         bundle.putString("label", "Email");
         bundle.putString("placeholder", "Digite o seu email");
+        bundle.putInt("type", InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
@@ -85,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
         bundle.putString("label", "Senha");
         bundle.putString("placeholder", "Digite a sua senha");
+        bundle.putInt("type", InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
@@ -105,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void isFormValid() {
+    private void isFormValid() {
 
         if(emailFrag.isValid() && passwordFrag.isValid()) {
 
