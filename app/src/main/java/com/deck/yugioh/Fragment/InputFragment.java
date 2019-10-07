@@ -101,7 +101,8 @@ public class InputFragment extends Fragment {
           @Override
           public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-              InputFragment.this.checkValidation();
+              if(start != before)
+                InputFragment.this.checkValidation();
 
           }
 

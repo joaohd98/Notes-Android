@@ -79,7 +79,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:onClick="submitForm"
-        android:text="@strin"
+        android:text="Entrar"
         android:theme="@style/GreenButton"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
