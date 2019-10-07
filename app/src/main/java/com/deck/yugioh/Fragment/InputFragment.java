@@ -145,4 +145,8 @@ public class InputFragment extends Fragment {
 
     }
 
+    public boolean isValid() {
+        return isValid;
+    }
+
 }

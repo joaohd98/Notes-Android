@@ -5,7 +5,8 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.Button;
 
 import com.deck.yugioh.Fragment.InputFragment;
 import com.deck.yugioh.R;
@@ -19,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     FragmentManager fm = getSupportFragmentManager();
     InputFragment emailFrag;
     InputFragment passwordFrag;
+    Button submitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,11 @@ public class LoginActivity extends AppCompatActivity {
         this.emailFrag = (InputFragment) this.fm.findFragmentById(R.id.email_frag);
         this.passwordFrag = (InputFragment) this.fm.findFragmentById(R.id.password_frag);
 
+        this.submitBtn = findViewById(R.id.loginBtn);
+
         this.setEmailField();
         this.setPasswordField();
+        this.setSubmitBtn();
 
     }
 
@@ -39,6 +44,13 @@ public class LoginActivity extends AppCompatActivity {
         Helpers.removeFocusClickOutside(this, event);
 
         return super.dispatchTouchEvent(event);
+
+    }
+
+    private void setSubmitBtn() {
+
+        this.submitBtn.setAlpha(.5f);
+        this.submitBtn.setClickable(false);
 
     }
 
@@ -77,7 +89,8 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void submitForm() {
+    public void submitForm(View view) {
+
 
 
     }
