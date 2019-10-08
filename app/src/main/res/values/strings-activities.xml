@@ -1,4 +1,16 @@
 <resources>
 
+    <!-- LOGIN -->
+    <string name="activity_login_image">Logo Image</string>
+    <string name="activity_login_email_label">Email</string>
+    <string name="activity_login_email_placeholder">Digite o seu email</string>
+    <string name="activity_login_email_validation_required">Campo email é obrigatório.</string>
+    <string name="activity_login_email_validation_invalid">Email inválido.</string>
+    <string name="activity_login_password_label">Senha</string>
+    <string name="activity_login_password_placeholder">Digite a sua senha</string>
+    <string name="activity_login_password_validation_required">Campo senha é obrigatório.</string>
+    <string name="activity_login_password_validation_min_length">Senha tem que ter no mínimo 4 dígitos.</string>x
+    <string name="activity_login_button">Entrar</string>
+
 
 </resources>

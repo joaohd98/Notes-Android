@@ -13,7 +13,7 @@ import android.widget.EditText;
 
 public class Helpers {
 
-    public static LayerDrawable getBorders(int backgroundColor, int borderColor, int left, int top, int right, int bottom){
+    public static LayerDrawable getBorders(int backgroundColor, int borderColor, int left, int top, int right, int bottom) {
 
         ColorDrawable borderColorDrawable = new ColorDrawable(borderColor);
         ColorDrawable backgroundColorDrawable = new ColorDrawable(backgroundColor);

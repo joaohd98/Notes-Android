@@ -52,14 +52,14 @@ public class LoginActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
 
-        bundle.putString("label", "Email");
-        bundle.putString("placeholder", "Digite o seu email");
+        bundle.putString("label", getString(R.string.activity_login_email_label));
+        bundle.putString("placeholder", getString(R.string.activity_login_email_placeholder));
         bundle.putInt("type", InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
-        rules.add(new ValidatorModel(R.string.validators_required, "Campo E-mail é obrigatório."));
-        rules.add(new ValidatorModel(R.string.validators_email, "E-mail inválido."));
+        rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_email_validation_required)));
+        rules.add(new ValidatorModel(R.string.validators_email, getString(R.string.activity_login_email_validation_invalid)));
 
         bundle.putParcelableArrayList("rules", rules);
 
@@ -80,16 +80,16 @@ public class LoginActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
 
-        bundle.putString("label", "Senha");
-        bundle.putString("placeholder", "Digite a sua senha");
-        bundle.putInt("type", InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        bundle.putString(getString(R.string.fragment_input_label), getString(R.string.activity_login_password_label));
+        bundle.putString(getString(R.string.fragment_input_placeholder), getString(R.string.activity_login_password_placeholder));
+        bundle.putInt(getString(R.string.fragment_input_type), InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
-        rules.add(new ValidatorModel(R.string.validators_required, "Campo senha é obrigatório."));
-        rules.add(new ValidatorModel( R.string.validators_min_length, "Senha tem que ter no mínimo 4 dígitos.", 4));
+        rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_password_validation_required)));
+        rules.add(new ValidatorModel(R.string.validators_min_length, getString(R.string.activity_login_password_validation_min_length), 4));
 
-        bundle.putParcelableArrayList("rules", rules);
+        bundle.putParcelableArrayList(getString(R.string.fragment_input_rules), rules);
 
         this.passwordFrag.setFormValidCallback(new InputFragment.InputFragmentCallBack() {
 
@@ -107,6 +107,8 @@ public class LoginActivity extends AppCompatActivity {
     private void setSubmitBtn() {
 
         this.isFormValid();
+
+        this.submitBtn.setOnClickListener(this.submitForm());
 
     }
 
@@ -128,9 +130,14 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void submitForm(View view) {
+    private View.OnClickListener submitForm() {
 
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        };
 
     }
 

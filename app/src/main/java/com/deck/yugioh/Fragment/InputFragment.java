@@ -67,7 +67,7 @@ public class InputFragment extends Fragment {
 
         if(savedInstanceState != null) {
 
-            int type = savedInstanceState.getInt("type");
+            int type = savedInstanceState.getInt(getString(R.string.fragment_input_label));
 
             if(type == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
 
@@ -79,10 +79,10 @@ public class InputFragment extends Fragment {
             else
                 this.input.setInputType(InputType.TYPE_CLASS_TEXT | type);
 
-            this.input.setHint(savedInstanceState.getString("placeholder"));
-            this.label.setText(savedInstanceState.getString("label"));
+            this.input.setHint(savedInstanceState.getString(getString(R.string.fragment_input_placeholder)));
+            this.label.setText(savedInstanceState.getString(getString(R.string.fragment_input_label)));
 
-            this.rules = savedInstanceState.getParcelableArrayList("rules");
+            this.rules = savedInstanceState.getParcelableArrayList(getString(R.string.fragment_input_rules));
 
         }
 

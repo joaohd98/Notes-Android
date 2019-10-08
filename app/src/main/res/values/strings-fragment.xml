@@ -1,3 +1,9 @@
 <resources>
 
+    <!-- INPUT -->
+    <string name="fragment_input_label">label</string>
+    <string name="fragment_input_placeholder">placeholder</string>
+    <string name="fragment_input_type">type</string>
+    <string name="fragment_input_rules">rules</string>
+
 </resources>
