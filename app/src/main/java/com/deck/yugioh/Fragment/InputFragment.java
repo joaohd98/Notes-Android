@@ -71,12 +71,13 @@ public class InputFragment extends Fragment {
 
             if(type == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
 
-                this.input.setTypeface(Typeface.DEFAULT);
-                this.input.setTransformationMethod(new PasswordTransformationMethod());
+                this.input.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                this.input.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
             }
 
-            this.input.setInputType(InputType.TYPE_CLASS_TEXT | type);
+            else
+                this.input.setInputType(InputType.TYPE_CLASS_TEXT | type);
 
             this.input.setHint(savedInstanceState.getString("placeholder"));
             this.label.setText(savedInstanceState.getString("label"));
