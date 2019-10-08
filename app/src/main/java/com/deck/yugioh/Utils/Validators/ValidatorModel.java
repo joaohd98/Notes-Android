@@ -2,11 +2,13 @@ package com.deck.yugioh.Utils.Validators;
 
 import android.os.Parcel;
 
+import androidx.annotation.Nullable;
+
 public class ValidatorModel implements android.os.Parcelable {
 
     private int rule;
     private String message;
-    private Object parameter;
+    private @Nullable Integer parameterInt;
 
     static Creator<ValidatorModel> CREATOR;
 
@@ -17,11 +19,11 @@ public class ValidatorModel implements android.os.Parcelable {
 
     }
 
-    public ValidatorModel(int rule, String message, Object parameter) {
+    public ValidatorModel(int rule, String message, @Nullable Integer parameterInt) {
 
         this.rule = rule;
         this.message = message;
-        this.parameter = parameter;
+        this.parameterInt = parameterInt;
 
     }
 
@@ -29,6 +31,7 @@ public class ValidatorModel implements android.os.Parcelable {
 
         this.rule = in.readInt();
         this.message = in.readString();
+        this.parameterInt = in.readInt();
 
     }
 
@@ -43,6 +46,9 @@ public class ValidatorModel implements android.os.Parcelable {
         dest.writeInt(this.rule);
         dest.writeString(this.message);
 
+        if(this.parameterInt != null)
+            dest.writeInt(this.parameterInt);
+
     }
 
     public int getRule() {
@@ -53,8 +59,9 @@ public class ValidatorModel implements android.os.Parcelable {
         return message;
     }
 
-    public Object getParameter() {
-        return parameter;
+    @Nullable
+    public Integer getParameterInt() {
+        return parameterInt;
     }
 
 }

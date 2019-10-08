@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
         rules.add(new ValidatorModel(R.string.validators_required, "Campo senha é obrigatório."));
+        rules.add(new ValidatorModel( R.string.validators_min_length, "Senha tem que ter no mínimo 4 dígitos.", 4));
 
         bundle.putParcelableArrayList("rules", rules);
 

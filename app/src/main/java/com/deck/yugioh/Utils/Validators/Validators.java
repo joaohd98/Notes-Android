@@ -27,13 +27,13 @@ public class Validators {
 
     private static boolean hasMinLength(String text, Integer size) {
 
-        return text.length() < size;
+        return text.length() > size;
 
     }
 
     private static boolean hasMaxLength(String text, Integer size) {
 
-        return text.length() > size;
+        return text.length() < size;
 
     }
 

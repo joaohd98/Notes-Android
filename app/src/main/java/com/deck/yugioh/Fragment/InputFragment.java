@@ -132,7 +132,12 @@ public class InputFragment extends Fragment {
 
         for(ValidatorModel rule: this.rules) {
 
-            isValid = Validators.isValid(rule.getRule(), this.input.getText().toString());
+            if(rule.getParameterInt() != null)
+                isValid = Validators.isValid(rule.getRule(), this.input.getText().toString(), rule.getParameterInt());
+
+            else
+                isValid = Validators.isValid(rule.getRule(), this.input.getText().toString());
+
 
             if(!isValid) {
 
