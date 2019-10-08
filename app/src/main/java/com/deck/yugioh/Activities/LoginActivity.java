@@ -52,16 +52,16 @@ public class LoginActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
 
-        bundle.putString("label", getString(R.string.activity_login_email_label));
-        bundle.putString("placeholder", getString(R.string.activity_login_email_placeholder));
-        bundle.putInt("type", InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        bundle.putString(getString(R.string.fragment_input_label), getString(R.string.activity_login_email_label));
+        bundle.putString(getString(R.string.fragment_input_placeholder), getString(R.string.activity_login_email_placeholder));
+        bundle.putInt(getString(R.string.fragment_input_type), InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
         rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_email_validation_required)));
         rules.add(new ValidatorModel(R.string.validators_email, getString(R.string.activity_login_email_validation_invalid)));
 
-        bundle.putParcelableArrayList("rules", rules);
+        bundle.putParcelableArrayList(getString(R.string.fragment_input_rules), rules);
 
         this.emailFrag.setFormValidCallback(new InputFragment.InputFragmentCallBack() {
 
