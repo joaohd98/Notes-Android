@@ -9,7 +9,7 @@
     <string name="activity_login_password_label">Senha</string>
     <string name="activity_login_password_placeholder">Digite a sua senha</string>
     <string name="activity_login_password_validation_required">Campo senha é obrigatório.</string>
-    <string name="activity_login_password_validation_min_length">Senha tem que ter no mínimo 4 dígitos.</string>x
+    <string name="activity_login_password_validation_min_length">Senha tem que ter no mínimo 6 dígitos.</string>x
     <string name="activity_login_button">Entrar</string>
 
 

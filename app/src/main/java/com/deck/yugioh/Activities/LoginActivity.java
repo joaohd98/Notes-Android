@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
         rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_password_validation_required)));
-        rules.add(new ValidatorModel(R.string.validators_min_length, getString(R.string.activity_login_password_validation_min_length), 4));
+        rules.add(new ValidatorModel(R.string.validators_min_length, getString(R.string.activity_login_password_validation_min_length), 6));
 
         bundle.putParcelableArrayList(getString(R.string.fragment_input_rules), rules);
 
