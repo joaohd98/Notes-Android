@@ -67,7 +67,7 @@ public class InputFragment extends Fragment {
 
         if(savedInstanceState != null) {
 
-            int type = savedInstanceState.getInt(getString(R.string.fragment_input_label));
+            int type = savedInstanceState.getInt(getString(R.string.fragment_input_type));
 
             if(type == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
 
