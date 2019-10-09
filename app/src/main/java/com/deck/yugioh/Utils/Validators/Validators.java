@@ -57,7 +57,7 @@ public class Validators {
 
         else if(rule == R.string.validators_max_length)
             return Validators.hasMaxLength(text, (Integer) parameter);
-        
+
         else
             return true;
 
