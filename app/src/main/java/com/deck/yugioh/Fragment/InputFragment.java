@@ -174,6 +174,10 @@ public class InputFragment extends Fragment {
 
     }
 
+    public String getInputValue() {
+        return this.input.getText().toString();
+    }
+
     public boolean isValid() {
         return isValid;
     }
