@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:isScrollContainer="false"
+    android:isScrollContainer="true"
     tools:context=".Activities.LoginActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -37,8 +37,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/activity_login_image"
@@ -47,16 +47,26 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         app:srcCompat="@drawable/millenium_puzzle" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/activity_login_title"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
     <fragment
         android:id="@+id/email_frag"
         android:name="com.deck.yugioh.Fragment.InputFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:layout="@layout/fragment_input" />
 
     <fragment
@@ -64,7 +74,7 @@
         android:name="com.deck.yugioh.Fragment.InputFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -76,12 +86,13 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/activity_login_button"
         android:theme="@style/GreenButton"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_frag" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
