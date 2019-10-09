@@ -45,15 +45,21 @@ public class Validators {
 
     public static boolean isValid(int rule, String text, Object parameter) {
 
-        switch (rule) {
+        if(rule == R.string.validators_required)
+            return Validators.required(text);
 
-            case R.string.validators_required: return Validators.required(text);
-            case R.string.validators_email: return Validators.isEmail(text);
-            case R.string.validators_min_length: return Validators.hasMinLength(text, (Integer) parameter);
-            case R.string.validators_max_length: return Validators.hasMaxLength(text, (Integer) parameter);
-            default: return true;
+        else if(rule == R.string.validators_email)
+            return Validators.isEmail(text);
 
-        }
+        else if(rule == R.string.validators_min_length)
+            return Validators.hasMinLength(text, (Integer) parameter);
+
+
+        else if(rule == R.string.validators_max_length)
+            return Validators.hasMaxLength(text, (Integer) parameter);
+        
+        else
+            return true;
 
     }
 

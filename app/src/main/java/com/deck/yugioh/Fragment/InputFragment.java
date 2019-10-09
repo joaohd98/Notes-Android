@@ -1,6 +1,5 @@
 package com.deck.yugioh.Fragment;
 
-import android.graphics.Typeface;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 
@@ -138,7 +137,6 @@ public class InputFragment extends Fragment {
 
             else
                 isValid = Validators.isValid(rule.getRule(), this.input.getText().toString());
-
 
             if(!isValid) {
 
