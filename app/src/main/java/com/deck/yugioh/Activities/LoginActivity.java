@@ -52,10 +52,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if(currentUser != null)
-            return;
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//
+//        if(currentUser != null)
+//            return;
 
         this.setEmailField();
         this.setPasswordField();
