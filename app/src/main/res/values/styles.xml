@@ -17,4 +17,14 @@
         <item name="android:topLeftRadius">15dp</item>
     </style>
 
+
+    <style name="BlueButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/colorBackground</item>
+        <item name="colorButtonNormal">@color/colorLink</item>
+        <item name="android:bottomRightRadius">15dp</item>
+        <item name="android:bottomLeftRadius">15dp</item>
+        <item name="android:topRightRadius">15dp</item>
+        <item name="android:topLeftRadius">15dp</item>
+    </style>
+
 </resources>
