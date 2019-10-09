@@ -105,7 +105,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="5dp"
-                android:text="Esqueceu a Senha?"
+                android:text="@string/activity_login_forgot_password"
                 android:textColor="@color/colorLink"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -136,7 +136,7 @@
                     android:layout_weight="0"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
-                    android:text="ou" />
+                    android:text="@string/activity_login_or" />
 
                 <View
                     android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="Cadastrar"
+                android:text="@string/activity_login_register"
                 android:theme="@style/BlueButton"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
