@@ -8,4 +8,6 @@
     <color name="colorWarning">#ffc107</color>
     <color name="colorDanger">#dc3545</color>
     <color name="colorLink">#0000EE</color>
+    <color name="colorWhiteSmoke">#F5F5F5</color>
+    #F5F5F5
 </resources>
