@@ -1,33 +1,27 @@
 package com.deck.yugioh.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.deck.yugioh.Fragment.InputFragment;
+import com.deck.yugioh.HttpRequest.AuthAPI;
+import com.deck.yugioh.Model.Auth.AuthRequestModel;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Helpers.Helpers;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.deck.yugioh.Wrapper.AuthWrapper;
 
 import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private FragmentManager fm = getSupportFragmentManager();
+    private AuthWrapper authWrapper = new AuthWrapper();
     private InputFragment emailFrag;
     private InputFragment passwordFrag;
     private Button submitBtn;
@@ -37,10 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        this.mAuth = FirebaseAuth.getInstance();
-
-        this.emailFrag = (InputFragment) this.fm.findFragmentById(R.id.email_frag);
-        this.passwordFrag = (InputFragment) this.fm.findFragmentById(R.id.password_frag);
+        this.emailFrag = (InputFragment) getSupportFragmentManager().findFragmentById(R.id.email_frag);
+        this.passwordFrag = (InputFragment) getSupportFragmentManager().findFragmentById(R.id.password_frag);
 
         this.submitBtn = findViewById(R.id.loginBtn);
 
@@ -132,8 +124,6 @@ public class LoginActivity extends AppCompatActivity {
 
         this.isFormValid();
 
-        this.submitBtn.setOnClickListener(this.submitForm());
-
     }
 
     private void isFormValid() {
@@ -154,37 +144,22 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private View.OnClickListener submitForm() {
+    public void submitForm(View view) {
 
-        final LoginActivity activity = this;
+        AuthRequestModel auth = new AuthRequestModel(this.emailFrag.getInputValue(), this.passwordFrag.getInputValue());
 
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        this.authWrapper.setAuthRequestModel(auth);
 
-                final String email = activity.emailFrag.getInputValue();
-                final String password = activity.passwordFrag.getInputValue();
+        AuthAPI authAPI = new AuthAPI();
 
-                activity.mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+        authAPI.callRequest(this.authWrapper);
 
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(activity, "Authentication success.", Toast.LENGTH_SHORT).show();
+        if(this.authWrapper.getAuthResponseModel() != null)
+            Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
 
-                        }
+        else
+            Toast.makeText(this, "Falha", Toast.LENGTH_SHORT).show();
 
-                        else
-                            Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_SHORT).show();
-
-                    }
-
-                });
-
-            }
-
-        };
 
     }
 
