@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.deck.yugioh.Fragment.InputFragment;
 import com.deck.yugioh.HttpRequest.AuthAPI;
+import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Auth.AuthRequestModel;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Helpers.Helpers;
@@ -152,14 +153,17 @@ public class LoginActivity extends AppCompatActivity {
 
         AuthAPI authAPI = new AuthAPI();
 
-        authAPI.callRequest(this.authWrapper);
+        authAPI.callRequest(this.authWrapper, new RequestCallBack<AuthWrapper>() {
+            @Override
+            public void success(AuthWrapper response) {
+                Toast.makeText(LoginActivity.this, "Sucesso", Toast.LENGTH_SHORT).show();
+            }
 
-        if(this.authWrapper.getAuthResponseModel() != null)
-            Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
-
-        else
-            Toast.makeText(this, "Falha", Toast.LENGTH_SHORT).show();
-
+            @Override
+            public void error() {
+                Toast.makeText(LoginActivity.this, "Falha", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

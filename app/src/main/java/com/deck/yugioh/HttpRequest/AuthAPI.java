@@ -2,7 +2,8 @@ package com.deck.yugioh.HttpRequest;
 
 import androidx.annotation.NonNull;
 
-import com.deck.yugioh.HttpRequest.Utils.RequestInterface;
+import com.deck.yugioh.HttpRequest.Utils.Request;
+import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Auth.AuthRequestModel;
 import com.deck.yugioh.Model.Auth.AuthResponseModel;
 import com.deck.yugioh.Wrapper.AuthWrapper;
@@ -12,9 +13,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class AuthAPI implements RequestInterface<AuthWrapper> {
+public class AuthAPI implements Request<AuthWrapper> {
 
-    public void callRequest(final AuthWrapper auth) {
+    public void callRequest(final AuthWrapper auth, final RequestCallBack<AuthWrapper> callBack) {
 
         final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
@@ -32,7 +33,12 @@ public class AuthAPI implements RequestInterface<AuthWrapper> {
 
                 auth.setAuthResponseModel(response);
 
+                callBack.success(auth);
+
             }
+
+            else
+                callBack.error();
 
             }
 
