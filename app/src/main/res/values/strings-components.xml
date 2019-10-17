@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- Loading View -->
+    <string name="components_loading_text">Carregando</string>
+
+
+</resources>

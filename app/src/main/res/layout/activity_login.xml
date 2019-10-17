@@ -167,4 +167,66 @@
 
 
     </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:background="@color/colorBackground"
+            android:orientation="horizontal"
+            android:padding="1dp"
+            android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/loading_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="-8dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--
+
+
+        new Timer().scheduleAtFixedRate(new TimerTask(){
+            @Override
+            public void run(){
+
+                String txt = textView.getText().toString();
+
+                if(txt.length() > 15)
+                    txt = defaultText;
+
+                else
+                    txt += ".";
+
+                textView.setText(txt);
+
+            }
+
+        }, 0, 1000);
+
+     -->
 </androidx.constraintlayout.widget.ConstraintLayout>
