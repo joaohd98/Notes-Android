@@ -30,9 +30,13 @@
 
             <TextView
                 android:id="@+id/loading_text"
+                android:text="@string/components_loading_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:textStyle="bold"
                 android:layout_marginStart="-8dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp" />
 
