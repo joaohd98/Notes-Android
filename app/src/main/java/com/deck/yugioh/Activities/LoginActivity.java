@@ -37,8 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
         this.submitBtn = findViewById(R.id.loginBtn);
 
-
-
     }
 
     @Override
