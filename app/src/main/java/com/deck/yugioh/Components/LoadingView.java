@@ -14,6 +14,7 @@ import java.util.TimerTask;
 
 public class LoadingView extends ConstraintLayout {
 
+    private ConstraintLayout constraintLayout;
     private TextView textView;
 
     public LoadingView(Context context) {
@@ -35,7 +36,15 @@ public class LoadingView extends ConstraintLayout {
 
         View view = inflate(context, R.layout.sample_loading_view, this);
 
-        this.textView = view.findViewById(R.id.loading_text);
+        this.textView = view.findViewById(R.id.view_loading_text);
+        this.constraintLayout = view.findViewById(R.id.view_loading);
+
+
+        this.setSchedule();
+
+    }
+
+    private void setSchedule() {
 
         new Timer().scheduleAtFixedRate(new TimerTask(){
             @Override
@@ -56,4 +65,19 @@ public class LoadingView extends ConstraintLayout {
         }, 0, 1000);
 
     }
+
+    public void show() {
+
+        this.constraintLayout.setVisibility(VISIBLE);
+
+    }
+
+    public void hide() {
+
+        this.constraintLayout.setVisibility(INVISIBLE);
+
+    }
+
 }
+
+

@@ -2,9 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:animateLayoutChanges="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#99000000"
+    android:id="@+id/view_loading"
+    android:visibility="gone"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +32,7 @@
                 android:padding="10dp" />
 
             <TextView
-                android:id="@+id/loading_text"
+                android:id="@+id/view_loading_text"
                 android:text="@string/components_loading_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

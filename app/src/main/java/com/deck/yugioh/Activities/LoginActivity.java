@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.deck.yugioh.Components.LoadingView;
 import com.deck.yugioh.Fragment.InputFragment;
 import com.deck.yugioh.HttpRequest.AuthAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
@@ -22,7 +23,9 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private LoadingView loadingView;
     private AuthWrapper authWrapper = new AuthWrapper();
+
     private InputFragment emailFrag;
     private InputFragment passwordFrag;
     private Button submitBtn;
@@ -32,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        this.loadingView = findViewById(R.id.activity_login_loading);
         this.emailFrag = (InputFragment) getSupportFragmentManager().findFragmentById(R.id.email_frag);
         this.passwordFrag = (InputFragment) getSupportFragmentManager().findFragmentById(R.id.password_frag);
 
@@ -42,11 +46,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//
-//        if(currentUser != null)
-//            return;
 
         this.setEmailField();
         this.setPasswordField();
@@ -145,6 +144,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void submitForm(View view) {
 
+        this.loadingView.show();
+
         AuthRequestModel auth = new AuthRequestModel(this.emailFrag.getInputValue(), this.passwordFrag.getInputValue());
 
         this.authWrapper.setAuthRequestModel(auth);
@@ -154,13 +155,22 @@ public class LoginActivity extends AppCompatActivity {
         authAPI.callRequest(this.authWrapper, new RequestCallBack<AuthWrapper>() {
             @Override
             public void success(AuthWrapper response) {
+
+                loadingView.hide();
+
                 Toast.makeText(LoginActivity.this, "Sucesso", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void error() {
+
+                loadingView.hide();
+
                 Toast.makeText(LoginActivity.this, "Falha", Toast.LENGTH_SHORT).show();
+
             }
+
         });
 
     }
