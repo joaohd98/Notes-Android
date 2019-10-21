@@ -1,50 +1,55 @@
-package com.deck.yugioh.Activities;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.deck.yugioh.Fragment;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.text.InputType;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
-import com.deck.yugioh.Fragment.InputFragment;
 import com.deck.yugioh.HttpRequest.AuthAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Auth.AuthRequestModel;
 import com.deck.yugioh.R;
-import com.deck.yugioh.Utils.Helpers.Helpers;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.deck.yugioh.Wrapper.AuthWrapper;
 
 import java.util.ArrayList;
 
-public class LoginActivity extends AppCompatActivity {
+
+public class LoginFragment extends Fragment {
 
     private LoadingView loadingView;
     private AuthWrapper authWrapper = new AuthWrapper();
 
-    private InputFragment emailFrag;
-    private InputFragment passwordFrag;
+    private InputView emailFrag;
+    private InputView passwordFrag;
     private Button submitBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        this.loadingView = findViewById(R.id.activity_login_loading);
-        this.emailFrag = (InputFragment) getSupportFragmentManager().findFragmentById(R.id.email_frag);
-        this.passwordFrag = (InputFragment) getSupportFragmentManager().findFragmentById(R.id.password_frag);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        this.submitBtn = findViewById(R.id.loginBtn);
+        this.loadingView = view.findViewById(R.id.activity_login_loading);
+        this.emailFrag =  view.findViewById(R.id.email_frag);
+        this.passwordFrag = view.findViewById(R.id.password_frag);
+
+        this.submitBtn = view.findViewById(R.id.loginBtn);
+
+        return view;
 
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
 
         this.setEmailField();
@@ -53,14 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
 
-        Helpers.removeFocusClickOutside(this, event);
-
-        return super.dispatchTouchEvent(event);
-
-    }
 
     private void setEmailField() {
 
@@ -77,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 
         bundle.putParcelableArrayList(getString(R.string.fragment_input_rules), rules);
 
-        this.emailFrag.setFormValidCallback(new InputFragment.InputFragmentCallBack() {
+        this.emailFrag.setFormValidCallback(new InputView.ViewCallBack() {
 
             @Override
             public void onInput() {
@@ -105,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 
         bundle.putParcelableArrayList(getString(R.string.fragment_input_rules), rules);
 
-        this.passwordFrag.setFormValidCallback(new InputFragment.InputFragmentCallBack() {
+        this.passwordFrag.setFormValidCallback(new InputView.ViewCallBack() {
 
             @Override
             public void onInput() {
@@ -120,6 +118,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setSubmitBtn() {
 
+        this.submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitForm();
+            }
+        });
         this.isFormValid();
 
     }
@@ -142,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void submitForm(View view) {
+    private void submitForm() {
 
         this.loadingView.show();
 
@@ -158,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 loadingView.hide();
 
-                Toast.makeText(LoginActivity.this, "Sucesso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Sucesso", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -167,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 loadingView.hide();
 
-                Toast.makeText(LoginActivity.this, "Falha", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Falha", Toast.LENGTH_SHORT).show();
 
             }
 

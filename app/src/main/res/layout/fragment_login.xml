@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:isScrollContainer="true"
-    tools:context=".Activities.LoginActivity">
+    tools:context=".Fragment.LoginFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -49,15 +48,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textStyle="bold"
                 android:text="@string/activity_login_title"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toEndOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/guideline3" />
 
-            <fragment
+            <com.deck.yugioh.Components.InputView
                 android:id="@+id/email_frag"
-                android:name="com.deck.yugioh.Fragment.InputFragment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -65,11 +63,10 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                tools:layout="@layout/fragment_input" />
+                tools:layout="@layout/sample_input_view" />
 
-            <fragment
+            <com.deck.yugioh.Components.InputView
                 android:id="@+id/password_frag"
-                android:name="com.deck.yugioh.Fragment.InputFragment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -77,7 +74,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/email_frag"
-                tools:layout="@layout/fragment_input" />
+                tools:layout="@layout/sample_input_view" />
 
 
             <Button
@@ -87,7 +84,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:onClick="submitForm"
                 android:text="@string/activity_login_button"
                 android:theme="@style/GreenButton"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -162,20 +158,17 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </ScrollView>
 
     <com.deck.yugioh.Components.LoadingView
+        android:id="@+id/activity_login_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/activity_login_loading"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
