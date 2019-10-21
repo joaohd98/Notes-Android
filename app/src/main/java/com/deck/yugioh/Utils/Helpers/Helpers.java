@@ -2,17 +2,31 @@ package com.deck.yugioh.Utils.Helpers;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class Helpers {
+
+    public static void setTouchable(Context context, boolean enabled) {
+
+        Window window = ( (Activity) context ).getWindow();
+
+        if(enabled)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+
+        else
+            window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+    }
 
     public static LayerDrawable getBorders(int backgroundColor, int borderColor, int left, int top, int right, int bottom) {
 

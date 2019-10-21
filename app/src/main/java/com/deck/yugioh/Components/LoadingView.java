@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.Helpers.Helpers;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -39,6 +40,7 @@ public class LoadingView extends ConstraintLayout {
         this.textView = view.findViewById(R.id.view_loading_text);
         this.constraintLayout = view.findViewById(R.id.view_loading);
 
+        view.setEnabled(false);
 
         this.setSchedule();
 
@@ -68,13 +70,33 @@ public class LoadingView extends ConstraintLayout {
 
     public void show() {
 
-        this.constraintLayout.setVisibility(VISIBLE);
+        this.changeVisibility(true);
 
     }
 
     public void hide() {
 
-        this.constraintLayout.setVisibility(INVISIBLE);
+        this.changeVisibility(false);
+
+    }
+
+    private void changeVisibility(boolean show) {
+
+        if(show) {
+
+            Helpers.setTouchable(getContext(), false);
+
+            this.constraintLayout.setVisibility(VISIBLE);
+
+        }
+
+        else {
+
+            Helpers.setTouchable(getContext(), true);
+
+            this.constraintLayout.setVisibility(INVISIBLE);
+
+        }
 
     }
 

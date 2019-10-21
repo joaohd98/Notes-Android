@@ -124,6 +124,7 @@ public class LoginFragment extends Fragment {
                 submitForm();
             }
         });
+
         this.isFormValid();
 
     }
