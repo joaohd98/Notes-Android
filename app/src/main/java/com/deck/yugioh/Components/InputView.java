@@ -70,28 +70,21 @@ public class InputView extends ConstraintLayout {
 
     }
 
-    public void setContent(Bundle savedInstanceState) {
+    public void setContent(int type, String placeholder, String label, ArrayList<ValidatorModel> rules) {
 
-        if(savedInstanceState != null) {
+        if(type == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
 
-            int type = savedInstanceState.getInt(getContext().getString(R.string.fragment_input_type));
-
-            if(type == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
-
-                this.input.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                this.input.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
-            }
-
-            else
-                this.input.setInputType(InputType.TYPE_CLASS_TEXT | type);
-
-            this.input.setHint(savedInstanceState.getString(getContext().getString(R.string.fragment_input_placeholder)));
-            this.label.setText(savedInstanceState.getString(getContext().getString(R.string.fragment_input_label)));
-
-            this.rules = savedInstanceState.getParcelableArrayList(getContext().getString(R.string.fragment_input_rules));
+            this.input.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            this.input.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
         }
+
+        else
+            this.input.setInputType(InputType.TYPE_CLASS_TEXT | type);
+
+        this.input.setHint(placeholder);
+        this.label.setText(label);
+        this.rules = rules;
 
     }
 

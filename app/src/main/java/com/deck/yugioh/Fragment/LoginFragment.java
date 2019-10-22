@@ -1,6 +1,5 @@
 package com.deck.yugioh.Fragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,7 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.deck.yugioh.Components.DialogView;
+import com.deck.yugioh.Alerts.DialogInputView;
+import com.deck.yugioh.Alerts.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
 import com.deck.yugioh.HttpRequest.AuthAPI;
@@ -57,22 +57,36 @@ public class LoginFragment extends Fragment {
         this.setEmailField();
         this.setPasswordField();
         this.setSubmitBtn();
-    }
 
-    private void setEmailField() {
+        DialogInputView dialogInputView = new DialogInputView(getContext());
 
-        Bundle bundle = new Bundle();
-
-        bundle.putString(getString(R.string.fragment_input_label), getString(R.string.activity_login_email_label));
-        bundle.putString(getString(R.string.fragment_input_placeholder), getString(R.string.activity_login_email_placeholder));
-        bundle.putInt(getString(R.string.fragment_input_type), InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        dialogInputView.setTitle("Esqueceu a senha?");
+        dialogInputView.setLabel("Email");
+        dialogInputView.setPlaceholder("Digite seu email");
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
         rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_email_validation_required)));
         rules.add(new ValidatorModel(R.string.validators_email, getString(R.string.activity_login_email_validation_invalid)));
 
-        bundle.putParcelableArrayList(getString(R.string.fragment_input_rules), rules);
+        dialogInputView.setBtnSuccess("Enviar nova senha");
+
+        dialogInputView.setRules(rules);
+
+        dialogInputView.show();
+
+    }
+
+    private void setEmailField() {
+
+        int type = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;
+        String label = getString(R.string.activity_login_email_label);
+        String placeholder = getString(R.string.activity_login_email_placeholder);
+
+        ArrayList<ValidatorModel> rules = new ArrayList<>();
+
+        rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_email_validation_required)));
+        rules.add(new ValidatorModel(R.string.validators_email, getString(R.string.activity_login_email_validation_invalid)));
 
         this.emailFrag.setFormValidCallback(new InputView.ViewCallBack() {
 
@@ -83,24 +97,20 @@ public class LoginFragment extends Fragment {
 
         });
 
-        this.emailFrag.setContent(bundle);
+        this.emailFrag.setContent(type, label, placeholder, rules);
 
     }
 
     private void setPasswordField() {
 
-        Bundle bundle = new Bundle();
-
-        bundle.putString(getString(R.string.fragment_input_label), getString(R.string.activity_login_password_label));
-        bundle.putString(getString(R.string.fragment_input_placeholder), getString(R.string.activity_login_password_placeholder));
-        bundle.putInt(getString(R.string.fragment_input_type), InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        int type = InputType.TYPE_TEXT_VARIATION_PASSWORD;
+        String label = getString(R.string.activity_login_password_label);
+        String placeholder = getString(R.string.activity_login_password_placeholder);
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
         rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_password_validation_required)));
         rules.add(new ValidatorModel(R.string.validators_min_length, getString(R.string.activity_login_password_validation_min_length), 6));
-
-        bundle.putParcelableArrayList(getString(R.string.fragment_input_rules), rules);
 
         this.passwordFrag.setFormValidCallback(new InputView.ViewCallBack() {
 
@@ -111,7 +121,7 @@ public class LoginFragment extends Fragment {
 
         });
 
-        this.passwordFrag.setContent(bundle);
+        this.passwordFrag.setContent(type, label, placeholder, rules);
 
     }
 

@@ -1,7 +1,6 @@
-package com.deck.yugioh.Components;
+package com.deck.yugioh.Alerts;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +19,7 @@ public class DialogView {
     public DialogView(Context context) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setView(R.layout.sample_dialog_view);
+        builder.setView(R.layout.dialog_sample_view);
 
         this.alert = builder.create();
 
