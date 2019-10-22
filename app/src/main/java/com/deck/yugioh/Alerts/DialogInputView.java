@@ -2,13 +2,18 @@ package com.deck.yugioh.Alerts;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.Helpers.Helpers;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 
 import java.util.ArrayList;
@@ -16,6 +21,7 @@ import java.util.ArrayList;
 public class DialogInputView {
 
     private AlertDialog alert;
+    private Context context;
     private String title;
     private int type;
     private String label;
@@ -26,8 +32,11 @@ public class DialogInputView {
 
     public DialogInputView(Context context) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        this.context = context;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.customInputDialog);
         builder.setView(R.layout.dialog_input_view);
+
         this.alert = builder.create();
 
         this.btnSuccessCallback = new View.OnClickListener() {
@@ -49,18 +58,41 @@ public class DialogInputView {
 
         txtTitle.setText(this.title);
 
+        viewInput.setBackgroundColor(this.context.getResources().getColor(R.color.colorWhite));
         viewInput.setContent(type, placeholder, label, rules);
         viewInput.setFormValidCallback(new InputView.ViewCallBack() {
 
             @Override
             public void onInput() {
-                btnSubmit.setEnabled(viewInput.isValid());
+
+                isValid(btnSubmit, viewInput.isValid());
+
             }
 
         });
 
         btnSubmit.setText(this.btnSuccess);
         btnSubmit.setOnClickListener(this.btnSuccessCallback);
+
+        this.isValid(btnSubmit, false);
+
+    }
+
+    private void isValid(Button button, boolean valid) {
+
+        if(!valid) {
+
+            button.setAlpha(.5f);
+            button.setClickable(false);
+
+        }
+
+        else {
+
+            button.setAlpha(1);
+            button.setClickable(true);
+
+        }
 
     }
 

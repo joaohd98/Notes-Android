@@ -61,7 +61,7 @@ public class LoginFragment extends Fragment {
         DialogInputView dialogInputView = new DialogInputView(getContext());
 
         dialogInputView.setTitle("Esqueceu a senha?");
-        dialogInputView.setLabel("Email");
+        dialogInputView.setLabel("");
         dialogInputView.setPlaceholder("Digite seu email");
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();

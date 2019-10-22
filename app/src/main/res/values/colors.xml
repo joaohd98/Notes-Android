@@ -9,5 +9,6 @@
     <color name="colorDanger">#dc3545</color>
     <color name="colorLink">#87cef5</color>
     <color name="colorWhiteSmoke">#F5F5F5</color>
+    <color name="colorWhite">#FFF</color>
     #F5F5F5
 </resources>
