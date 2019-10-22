@@ -6,4 +6,20 @@
     <string name="fragment_input_type">type</string>
     <string name="fragment_input_rules">rules</string>
 
+    <!-- Register -->
+    <string name="fragment_register_title">Cadastro</string>
+    <string name="fragment_register_message">Preencha os dados para acessar o app</string>
+    <string name="fragment_register_name_label">Nome</string>
+    <string name="fragment_register_name_placeholder">Digite o seu nome</string>
+    <string name="fragment_register_name_validation_required">Campo nome é obrigatório.</string>
+    <string name="fragment_register_email_label">Email</string>
+    <string name="fragment_register_email_placeholder">Digite o seu email</string>
+    <string name="fragment_register_email_validation_required">Campo email é obrigatório.</string>
+    <string name="fragment_register_email_validation_invalid">Email inválido.</string>
+    <string name="fragment_register_password_label">Senha</string>
+    <string name="fragment_register_password_placeholder">Digite a sua senha</string>
+    <string name="fragment_register_password_validation_required">Campo senha é obrigatório.</string>
+    <string name="fragment_register_password_validation_min_length">Senha tem que ter no mínimo 6 dígitos.</string>x
+    <string name="fragment_register_button">Cadastrar</string>
+
 </resources>

@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/fragment2"
-        android:name="com.deck.yugioh.Fragment.LoginFragment"
+        android:name="com.deck.yugioh.Fragment.RegisterFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
