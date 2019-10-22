@@ -1,5 +1,6 @@
 package com.deck.yugioh.Fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
 import com.deck.yugioh.HttpRequest.AuthAPI;
@@ -55,10 +57,7 @@ public class LoginFragment extends Fragment {
         this.setEmailField();
         this.setPasswordField();
         this.setSubmitBtn();
-
     }
-
-
 
     private void setEmailField() {
 
@@ -172,7 +171,13 @@ public class LoginFragment extends Fragment {
 
                 loadingView.hide();
 
-                Toast.makeText(getContext(), "Falha", Toast.LENGTH_SHORT).show();
+                DialogView dialog = new DialogView(getContext());
+
+                dialog.setTitle("Atenção");
+                dialog.setInfo("Email ou/e senha incorretos.");
+                dialog.setBtnSuccess("Entendi");
+
+                dialog.show();
 
             }
 
