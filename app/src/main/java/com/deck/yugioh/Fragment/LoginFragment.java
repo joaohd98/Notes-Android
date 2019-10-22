@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.deck.yugioh.Alerts.DialogInputView;
 import com.deck.yugioh.Alerts.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
@@ -57,23 +56,6 @@ public class LoginFragment extends Fragment {
         this.setEmailField();
         this.setPasswordField();
         this.setSubmitBtn();
-
-        DialogInputView dialogInputView = new DialogInputView(getContext());
-
-        dialogInputView.setTitle("Esqueceu a senha?");
-        dialogInputView.setLabel("");
-        dialogInputView.setPlaceholder("Digite seu email");
-
-        ArrayList<ValidatorModel> rules = new ArrayList<>();
-
-        rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_email_validation_required)));
-        rules.add(new ValidatorModel(R.string.validators_email, getString(R.string.activity_login_email_validation_invalid)));
-
-        dialogInputView.setBtnSuccess("Enviar nova senha");
-
-        dialogInputView.setRules(rules);
-
-        dialogInputView.show();
 
     }
 

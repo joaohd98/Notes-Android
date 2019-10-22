@@ -59,7 +59,5 @@ public class DialogView {
         this.btnSuccess = btnSuccess;
     }
 
-    public void setBtnSuccessCallback(View.OnClickListener btnSuccessCallback) {
-        this.btnSuccessCallback = btnSuccessCallback;
-    }
+
 }
