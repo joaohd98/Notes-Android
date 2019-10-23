@@ -3,6 +3,6 @@ package com.deck.yugioh.HttpRequest.Utils;
 public interface RequestCallBack {
 
     void success();
-    void error();
+    void error(Exception exception);
 
 }

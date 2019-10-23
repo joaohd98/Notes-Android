@@ -21,5 +21,10 @@
     <string name="fragment_register_password_validation_required">Campo senha é obrigatório.</string>
     <string name="fragment_register_password_validation_min_length">Senha tem que ter no mínimo 6 dígitos.</string>x
     <string name="fragment_register_button">Cadastrar</string>
+    <string name="fragment_register_alert_title">Aviso</string>
+    <string name="fragment_register_alert_message_error_generic">Aviso</string>
+    <string name="fragment_register_alert_message_error_email">Aviso</string>
+    <string name="fragment_register_alert_message_error_internet">Aviso</string>
+    <string name="fragment_register_alert_message_error_no_internet">Aviso</string>
 
 </resources>

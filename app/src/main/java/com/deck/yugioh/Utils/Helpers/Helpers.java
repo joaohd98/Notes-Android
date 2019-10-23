@@ -46,34 +46,6 @@ public class Helpers {
 
     }
 
-    public static void removeFocusClickOutside(View v, MotionEvent event) {
-
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-
-            if (v instanceof EditText) {
-
-                Rect outRect = new Rect();
-                v.getGlobalVisibleRect(outRect);
-
-                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
-                    v.clearFocus();
-
-                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                    if(imm != null)
-                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-
-                }
-
-            }
-
-        }
-
-
-
-    }
-
-
     public static void removeFocusClickOutside(Activity activity, MotionEvent event) {
 
         if (event.getAction() == MotionEvent.ACTION_DOWN) {

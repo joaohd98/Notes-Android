@@ -1,7 +1,5 @@
 package com.deck.yugioh.HttpRequest;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.deck.yugioh.HttpRequest.Utils.Request;
@@ -26,7 +24,7 @@ public class AuthAPI implements Request<AuthRequestModel> {
                     callBack.success();
 
                 else
-                    callBack.error();
+                    callBack.error(task.getException());
 
             }
 

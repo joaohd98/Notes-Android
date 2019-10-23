@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.deck.yugioh.Alerts.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
 import com.deck.yugioh.HttpRequest.RegisterAPI;
@@ -19,6 +20,10 @@ import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Register.RegisterRequestModel;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.FirebaseNetworkException;
+import com.google.firebase.auth.FirebaseAuthEmailException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import java.util.ArrayList;
 
@@ -162,12 +167,35 @@ public class RegisterFragment extends Fragment {
                     }
 
                     @Override
-                    public void error() {
+                    public void error(Exception exception) {
 
                         loadingView.hide();
 
-                        Toast.makeText(getContext(), "Falha", Toast.LENGTH_SHORT).show();
+                        DialogView dialog = new DialogView(getContext());
 
+                        dialog.setTitle("Atenção");
+
+                        try {
+
+                            throw exception;
+
+                        } catch (FirebaseAuthUserCollisionException ignore) {
+
+                            dialog.setInfo("Email já em uso.");
+
+                        } catch (FirebaseNetworkException ignore) {
+
+                            dialog.setInfo("Sem conexão com a internet.");
+
+                        } catch (Exception e) {
+
+                            dialog.setInfo("Ocorreu um erro interno. Tente novamente mais tarde.");
+
+                        }
+
+                        dialog.setBtnSuccess("Ok");
+
+                        dialog.show();
                     }
 
                 });

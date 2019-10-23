@@ -37,7 +37,7 @@ public class RegisterAPI implements Request<RegisterRequestModel> {
                 }
 
                 else
-                    callBack.error();
+                    callBack.error(task.getException());
 
             }
 

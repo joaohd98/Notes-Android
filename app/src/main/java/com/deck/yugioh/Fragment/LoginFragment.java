@@ -156,7 +156,7 @@ public class LoginFragment extends Fragment {
             }
 
             @Override
-            public void error() {
+            public void error(Exception exception) {
 
                 loadingView.hide();
 
