@@ -1,8 +1,8 @@
 package com.deck.yugioh.HttpRequest.Utils;
 
-public interface RequestCallBack<Type> {
+public interface RequestCallBack {
 
-    void success(Type response);
+    void success();
     void error();
 
 }

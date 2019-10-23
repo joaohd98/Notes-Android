@@ -8,8 +8,8 @@
     tools:context=".Activities.GuestActivity">
 
     <fragment
-        android:id="@+id/fragment2"
-        android:name="com.deck.yugioh.Fragment.RegisterFragment"
+        android:id="@+id/fragment"
+        android:name="com.deck.yugioh.Fragment.LoginFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

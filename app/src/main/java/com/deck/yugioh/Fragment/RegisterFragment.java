@@ -10,10 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.deck.yugioh.Components.InputView;
+import com.deck.yugioh.HttpRequest.RegisterAPI;
+import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
+import com.deck.yugioh.Model.Register.RegisterRequestModel;
+import com.deck.yugioh.Model.Register.RegisterResponseModel;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
+import com.deck.yugioh.Wrapper.RegisterWrapper;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -47,12 +54,12 @@ public class RegisterFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-
         this.setNameField();
         this.setEmailField();
         this.setPasswordField();
 
-        this.checkIsValid();
+        this.setButton();
+
 
     }
 
@@ -79,7 +86,6 @@ public class RegisterFragment extends Fragment {
 
     }
 
-
     private void setEmailField() {
 
         int type = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;
@@ -104,7 +110,6 @@ public class RegisterFragment extends Fragment {
 
     }
 
-
     private void setPasswordField() {
 
         int type = InputType.TYPE_TEXT_VARIATION_PASSWORD;
@@ -126,6 +131,44 @@ public class RegisterFragment extends Fragment {
         });
 
         this.inputPassword.setContent(type, label, placeholder, rules);
+
+    }
+
+    private void setButton() {
+
+        this.checkIsValid();
+
+        this.btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(getContext(), "Iniciado", Toast.LENGTH_SHORT).show();
+
+                RegisterAPI registerAPI = new RegisterAPI();
+
+                RegisterRequestModel request = new RegisterRequestModel(inputName, inputEmail, inputPassword);
+
+                registerAPI.callRequest(request, new RequestCallBack() {
+
+                    @Override
+                    public void success() {
+
+                        Toast.makeText(getContext(), "Sucesso", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void error() {
+
+                        Toast.makeText(getContext(), "Falha", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                });
+
+            }
+
+        });
 
     }
 
