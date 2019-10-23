@@ -17,10 +17,8 @@ import com.deck.yugioh.Components.LoadingView;
 import com.deck.yugioh.HttpRequest.AuthAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Auth.AuthRequestModel;
-import com.deck.yugioh.Model.Auth.AuthResponseModel;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
-import com.deck.yugioh.Wrapper.AuthWrapper;
 
 import java.util.ArrayList;
 
@@ -142,7 +140,7 @@ public class LoginFragment extends Fragment {
 
         this.loadingView.show();
 
-        AuthRequestModel request = new AuthRequestModel(this.emailFrag.getInputValue(), this.passwordFrag.getInputValue());
+        AuthRequestModel request = new AuthRequestModel(this.emailFrag, this.passwordFrag);
 
         AuthAPI authAPI = new AuthAPI();
 

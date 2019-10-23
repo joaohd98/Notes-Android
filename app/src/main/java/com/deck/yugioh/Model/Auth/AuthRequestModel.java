@@ -1,11 +1,18 @@
 package com.deck.yugioh.Model.Auth;
 
+import com.deck.yugioh.Components.InputView;
+
 public class AuthRequestModel {
 
     private String email;
     private String password;
 
     public AuthRequestModel() {}
+
+    public AuthRequestModel(InputView email, InputView password) {
+        this.email = email.getInputValue();
+        this.password = password.getInputValue();
+    }
 
     public AuthRequestModel(String email, String password) {
         this.email = email;

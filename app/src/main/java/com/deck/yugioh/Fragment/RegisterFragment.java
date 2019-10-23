@@ -16,11 +16,8 @@ import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.HttpRequest.RegisterAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Register.RegisterRequestModel;
-import com.deck.yugioh.Model.Register.RegisterResponseModel;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
-import com.deck.yugioh.Wrapper.RegisterWrapper;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 

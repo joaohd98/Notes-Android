@@ -4,16 +4,15 @@ import androidx.annotation.NonNull;
 
 import com.deck.yugioh.HttpRequest.Utils.Request;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
+
 import com.deck.yugioh.Model.Register.RegisterRequestModel;
-import com.deck.yugioh.Model.Register.RegisterResponseModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-
-import java.util.Objects;
 
 public class RegisterAPI implements Request<RegisterRequestModel> {
 
@@ -37,10 +36,9 @@ public class RegisterAPI implements Request<RegisterRequestModel> {
 
                 }
 
-                else {
-
+                else
                     callBack.error();
-                }
+
             }
 
         });
