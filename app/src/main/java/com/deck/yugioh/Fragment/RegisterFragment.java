@@ -1,6 +1,7 @@
 package com.deck.yugioh.Fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -171,31 +172,38 @@ public class RegisterFragment extends Fragment {
 
                         loadingView.hide();
 
-                        DialogView dialog = new DialogView(getContext());
+                        Context context = getContext();
 
-                        dialog.setTitle("Atenção");
+                        if(context != null) {
 
-                        try {
+                            DialogView dialog = new DialogView(getContext());
 
-                            throw exception;
+                            dialog.setTitle(context.getString(R.string.fragment_register_alert_title));
 
-                        } catch (FirebaseAuthUserCollisionException ignore) {
+                            try {
 
-                            dialog.setInfo("Email já em uso.");
+                                throw exception;
 
-                        } catch (FirebaseNetworkException ignore) {
+                            } catch (FirebaseAuthUserCollisionException ignore) {
 
-                            dialog.setInfo("Sem conexão com a internet.");
+                                dialog.setInfo(context.getString(R.string.fragment_register_alert_message_error_email));
 
-                        } catch (Exception e) {
+                            } catch (FirebaseNetworkException ignore) {
 
-                            dialog.setInfo("Ocorreu um erro interno. Tente novamente mais tarde.");
+                                dialog.setInfo(context.getString(R.string.fragment_register_alert_message_error_no_internet));
+
+                            } catch (Exception ignore) {
+
+                                dialog.setInfo(context.getString(R.string.fragment_register_alert_message_error_generic));
+
+                            }
+
+                            dialog.setBtnSuccess(context.getString(R.string.fragment_register_alert_message_error_button));
+
+                            dialog.show();
 
                         }
 
-                        dialog.setBtnSuccess("Ok");
-
-                        dialog.show();
                     }
 
                 });

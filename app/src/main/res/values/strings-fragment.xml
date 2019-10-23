@@ -21,10 +21,10 @@
     <string name="fragment_register_password_validation_required">Campo senha é obrigatório.</string>
     <string name="fragment_register_password_validation_min_length">Senha tem que ter no mínimo 6 dígitos.</string>x
     <string name="fragment_register_button">Cadastrar</string>
-    <string name="fragment_register_alert_title">Aviso</string>
-    <string name="fragment_register_alert_message_error_generic">Aviso</string>
-    <string name="fragment_register_alert_message_error_email">Aviso</string>
-    <string name="fragment_register_alert_message_error_internet">Aviso</string>
-    <string name="fragment_register_alert_message_error_no_internet">Aviso</string>
+    <string name="fragment_register_alert_title">Atenção</string>
+    <string name="fragment_register_alert_message_error_email">Email já em uso.</string>
+    <string name="fragment_register_alert_message_error_no_internet">Sem conexão com a internet.</string>
+    <string name="fragment_register_alert_message_error_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
+    <string name="fragment_register_alert_message_error_button">OK</string>
 
 </resources>
