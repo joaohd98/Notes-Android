@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.deck.yugioh.Components.InputView;
+import com.deck.yugioh.Components.LoadingView;
 import com.deck.yugioh.HttpRequest.RegisterAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Register.RegisterRequestModel;
@@ -22,6 +23,8 @@ import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import java.util.ArrayList;
 
 public class RegisterFragment extends Fragment {
+
+    private LoadingView loadingView;
 
     private InputView inputName;
     private InputView inputEmail;
@@ -42,8 +45,10 @@ public class RegisterFragment extends Fragment {
         this.inputEmail = view.findViewById(R.id.fragment_register_email);
         this.inputPassword = view.findViewById(R.id.fragment_register_password);
         this.btnSubmit = view.findViewById(R.id.fragment_register_btn);
+        this.loadingView = view.findViewById(R.id.fragment_register_loading);
 
         return view;
+
 
     }
 
@@ -139,7 +144,7 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getContext(), "Iniciado", Toast.LENGTH_SHORT).show();
+                loadingView.show();
 
                 RegisterAPI registerAPI = new RegisterAPI();
 
@@ -150,12 +155,16 @@ public class RegisterFragment extends Fragment {
                     @Override
                     public void success() {
 
+                        loadingView.hide();
+
                         Toast.makeText(getContext(), "Sucesso", Toast.LENGTH_SHORT).show();
 
                     }
 
                     @Override
                     public void error() {
+
+                        loadingView.hide();
 
                         Toast.makeText(getContext(), "Falha", Toast.LENGTH_SHORT).show();
 
