@@ -59,5 +59,4 @@ public class DialogView {
         this.btnSuccess = btnSuccess;
     }
 
-
 }

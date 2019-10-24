@@ -27,4 +27,18 @@
     <string name="fragment_register_alert_message_error_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
     <string name="fragment_register_alert_message_error_button">OK</string>
 
+    <!-- Forgot Password -->
+    <string name="fragment_forgot_password_title">Nova Senha</string>
+    <string name="fragment_forgot_password_info">Caso tenha perdido sua senha, coloque seu email para mudar a senha.</string>
+    <string name="fragment_forgot_password_email_label">Email</string>
+    <string name="fragment_forgot_password_email_placeholder">Digite o seu email</string>
+    <string name="fragment_forgot_password_email_validation_required">Campo email é obrigatório.</string>
+    <string name="fragment_forgot_password_email_validation_invalid">Email inválido.</string>
+    <string name="fragment_forgot_password_button">Enviar nova senha</string>
+    <string name="fragment_forgot_password_alert_title">Atenção</string>
+    <string name="fragment_forgot_password_alert_message_email">Email não encontrado.</string>
+    <string name="fragment_forgot_password_alert_message_no_internet">Sem conexão com a internet.</string>
+    <string name="fragment_forgot_password_alert_message_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
+    <string name="fragment_forgot_password_alert_button">OK</string>
+
 </resources>

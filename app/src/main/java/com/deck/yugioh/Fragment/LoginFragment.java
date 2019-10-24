@@ -1,5 +1,6 @@
 package com.deck.yugioh.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -160,13 +161,21 @@ public class LoginFragment extends Fragment {
 
                 loadingView.hide();
 
-                DialogView dialog = new DialogView(getContext());
+//                Context context = getContext();
+//
+//                if(context != null) {
+//
+//                    DialogView dialog = new DialogView(getContext());
+//
+//                    dialog.setTitle(context.getString(R.string.fragment_forgot_password_alert_title));
+//                    dialog.setInfo("Email ou/e senha incorretos.");
+//                    dialog.setBtnSuccess(R.string.fragment_forgot_password_alert_title);
+//
+//                    dialog.show();
+//
+//                }
 
-                dialog.setTitle("Atenção");
-                dialog.setInfo("Email ou/e senha incorretos.");
-                dialog.setBtnSuccess("Entendi");
 
-                dialog.show();
 
             }
 
