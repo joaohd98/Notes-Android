@@ -1,11 +1,25 @@
 <resources>
 
-    <!-- INPUT -->
-    <string name="fragment_input_label">label</string>
-    <string name="fragment_input_placeholder">placeholder</string>
-    <string name="fragment_input_type">type</string>
-    <string name="fragment_input_rules">rules</string>
-
+    <!-- LOGIN -->
+    <string name="fragment_login_image">Logo Image</string>
+    <string name="fragment_login_title">Bem vindo ao Yu-Gi-Oh Builder</string>
+    <string name="fragment_login_email_label">Email</string>
+    <string name="fragment_login_email_placeholder">Digite o seu email</string>
+    <string name="fragment_login_email_validation_required">Campo email é obrigatório.</string>
+    <string name="fragment_login_email_validation_invalid">Email inválido.</string>
+    <string name="fragment_login_password_label">Senha</string>
+    <string name="fragment_login_password_placeholder">Digite a sua senha</string>
+    <string name="fragment_login_password_validation_required">Campo senha é obrigatório.</string>
+    <string name="fragment_login_password_validation_min_length">Senha tem que ter no mínimo 6 dígitos.</string>x
+    <string name="fragment_login_button">Entrar</string>
+    <string name="fragment_login_forgot_password">Esqueceu a senha?</string>
+    <string name="fragment_login_or">ou</string>
+    <string name="fragment_login_register">Cadastrar</string>
+    <string name="fragment_login_alert_title">Atenção</string>
+    <string name="fragment_login_alert_message_email_password">Email ou/e senha incorretos.</string>
+    <string name="fragment_login_alert_message_no_internet">Sem conexão com a internet.</string>
+    <string name="fragment_login_alert_message_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
+    <string name="fragment_login_alert_button">OK</string>
     <!-- Register -->
     <string name="fragment_register_title">Cadastro</string>
     <string name="fragment_register_message">Preencha os dados para acessar o app</string>
@@ -22,10 +36,10 @@
     <string name="fragment_register_password_validation_min_length">Senha tem que ter no mínimo 6 dígitos.</string>x
     <string name="fragment_register_button">Cadastrar</string>
     <string name="fragment_register_alert_title">Atenção</string>
-    <string name="fragment_register_alert_message_error_email">Email já em uso.</string>
-    <string name="fragment_register_alert_message_error_no_internet">Sem conexão com a internet.</string>
-    <string name="fragment_register_alert_message_error_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
-    <string name="fragment_register_alert_message_error_button">OK</string>
+    <string name="fragment_register_alert_message_email">Email já em uso.</string>
+    <string name="fragment_register_alert_message_no_internet">Sem conexão com a internet.</string>
+    <string name="fragment_register_alert_message_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
+    <string name="fragment_register_alert_button">OK</string>
 
     <!-- Forgot Password -->
     <string name="fragment_forgot_password_title">Nova Senha</string>

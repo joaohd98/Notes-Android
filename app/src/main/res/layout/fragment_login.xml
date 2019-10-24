@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/activity_login_title"
+                android:text="@string/fragment_login_title"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toEndOf="@+id/guideline"
@@ -84,7 +84,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/activity_login_button"
+                android:text="@string/fragment_login_button"
                 android:theme="@style/GreenButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -102,7 +102,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="5dp"
-                android:text="@string/activity_login_forgot_password"
+                android:text="@string/fragment_login_forgot_password"
                 android:textColor="@color/colorLink"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -133,7 +133,7 @@
                     android:layout_weight="0"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
-                    android:text="@string/activity_login_or" />
+                    android:text="@string/fragment_login_or" />
 
                 <View
                     android:layout_width="wrap_content"
@@ -152,7 +152,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/activity_login_register"
+                android:text="@string/fragment_login_register"
                 android:theme="@style/BlueButton"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -163,7 +163,7 @@
     </ScrollView>
 
     <com.deck.yugioh.Components.LoadingView
-        android:id="@+id/activity_login_loading"
+        android:id="@+id/fragment_login_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

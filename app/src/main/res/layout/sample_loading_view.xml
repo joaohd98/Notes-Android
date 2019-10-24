@@ -33,7 +33,7 @@
 
             <TextView
                 android:id="@+id/view_loading_text"
-                android:text="@string/components_loading_text"
+                android:text="@string/component_loading_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textStyle="bold"

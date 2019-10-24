@@ -186,19 +186,19 @@ public class RegisterFragment extends Fragment {
 
                             } catch (FirebaseAuthUserCollisionException ignore) {
 
-                                dialog.setInfo(context.getString(R.string.fragment_register_alert_message_error_email));
+                                dialog.setInfo(context.getString(R.string.fragment_register_alert_message_email));
 
                             } catch (FirebaseNetworkException ignore) {
 
-                                dialog.setInfo(context.getString(R.string.fragment_register_alert_message_error_no_internet));
+                                dialog.setInfo(context.getString(R.string.fragment_register_alert_message_no_internet));
 
                             } catch (Exception ignore) {
 
-                                dialog.setInfo(context.getString(R.string.fragment_register_alert_message_error_generic));
+                                dialog.setInfo(context.getString(R.string.fragment_register_alert_message_generic));
 
                             }
 
-                            dialog.setBtnSuccess(context.getString(R.string.fragment_register_alert_message_error_button));
+                            dialog.setBtnSuccess(context.getString(R.string.fragment_register_alert_button));
 
                             dialog.show();
 

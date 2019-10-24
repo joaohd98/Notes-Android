@@ -55,7 +55,7 @@ public class LoadingView extends ConstraintLayout {
                 String txt = textView.getText().toString();
 
                 if(txt.length() > 12)
-                    txt = getResources().getString(R.string.components_loading_text);
+                    txt = getResources().getString(R.string.component_loading_text);
 
                 else
                     txt += ".";

@@ -20,6 +20,8 @@ import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Auth.AuthRequestModel;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
+import com.google.firebase.FirebaseNetworkException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import java.util.ArrayList;
 
@@ -38,7 +40,7 @@ public class LoginFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        this.loadingView = view.findViewById(R.id.activity_login_loading);
+        this.loadingView = view.findViewById(R.id.fragment_login_loading);
         this.emailFrag =  view.findViewById(R.id.email_frag);
         this.passwordFrag = view.findViewById(R.id.password_frag);
 
@@ -61,13 +63,13 @@ public class LoginFragment extends Fragment {
     private void setEmailField() {
 
         int type = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;
-        String label = getString(R.string.activity_login_email_label);
-        String placeholder = getString(R.string.activity_login_email_placeholder);
+        String label = getString(R.string.fragment_login_email_label);
+        String placeholder = getString(R.string.fragment_login_email_placeholder);
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
-        rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_email_validation_required)));
-        rules.add(new ValidatorModel(R.string.validators_email, getString(R.string.activity_login_email_validation_invalid)));
+        rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.fragment_login_email_validation_required)));
+        rules.add(new ValidatorModel(R.string.validators_email, getString(R.string.fragment_login_email_validation_invalid)));
 
         this.emailFrag.setFormValidCallback(new InputView.ViewCallBack() {
 
@@ -85,13 +87,13 @@ public class LoginFragment extends Fragment {
     private void setPasswordField() {
 
         int type = InputType.TYPE_TEXT_VARIATION_PASSWORD;
-        String label = getString(R.string.activity_login_password_label);
-        String placeholder = getString(R.string.activity_login_password_placeholder);
+        String label = getString(R.string.fragment_login_password_label);
+        String placeholder = getString(R.string.fragment_login_password_placeholder);
 
         ArrayList<ValidatorModel> rules = new ArrayList<>();
 
-        rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.activity_login_password_validation_required)));
-        rules.add(new ValidatorModel(R.string.validators_min_length, getString(R.string.activity_login_password_validation_min_length), 6));
+        rules.add(new ValidatorModel(R.string.validators_required, getString(R.string.fragment_login_password_validation_required)));
+        rules.add(new ValidatorModel(R.string.validators_min_length, getString(R.string.fragment_login_password_validation_min_length), 6));
 
         this.passwordFrag.setFormValidCallback(new InputView.ViewCallBack() {
 
@@ -161,19 +163,37 @@ public class LoginFragment extends Fragment {
 
                 loadingView.hide();
 
-//                Context context = getContext();
-//
-//                if(context != null) {
-//
-//                    DialogView dialog = new DialogView(getContext());
-//
-//                    dialog.setTitle(context.getString(R.string.fragment_forgot_password_alert_title));
-//                    dialog.setInfo("Email ou/e senha incorretos.");
-//                    dialog.setBtnSuccess(R.string.fragment_forgot_password_alert_title);
-//
-//                    dialog.show();
-//
-//                }
+                Context context = getContext();
+
+                if(context != null) {
+
+                    DialogView dialog = new DialogView(getContext());
+
+                    dialog.setTitle(context.getString(R.string.fragment_login_alert_title));
+
+                    try {
+
+                        throw exception;
+
+                    } catch (FirebaseAuthUserCollisionException ignore) {
+
+                        dialog.setInfo(context.getString(R.string.fragment_login_alert_message_email_password));
+
+                    } catch (FirebaseNetworkException ignore) {
+
+                        dialog.setInfo(context.getString(R.string.fragment_login_alert_message_no_internet));
+
+                    } catch (Exception ignore) {
+
+                        dialog.setInfo(context.getString(R.string.fragment_login_alert_message_generic));
+
+                    }
+
+                    dialog.setBtnSuccess(context.getString(R.string.fragment_login_alert_button));
+
+                    dialog.show();
+
+                }
 
 
 
