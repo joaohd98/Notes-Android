@@ -4,12 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.deck.yugioh.Alerts.DialogView;
@@ -19,12 +21,12 @@ import com.deck.yugioh.HttpRequest.AuthAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Auth.AuthRequestModel;
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.Navigation.Navigation;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import java.util.ArrayList;
-
 
 public class LoginFragment extends Fragment {
 
@@ -32,7 +34,10 @@ public class LoginFragment extends Fragment {
 
     private InputView emailFrag;
     private InputView passwordFrag;
+
     private Button submitBtn;
+    private TextView forgotPasswordBtn;
+    private Button registerBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,10 +46,12 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         this.loadingView = view.findViewById(R.id.fragment_login_loading);
-        this.emailFrag =  view.findViewById(R.id.email_frag);
-        this.passwordFrag = view.findViewById(R.id.password_frag);
+        this.emailFrag =  view.findViewById(R.id.fragment_login_input_email);
+        this.passwordFrag = view.findViewById(R.id.fragment_login_input_password);
 
-        this.submitBtn = view.findViewById(R.id.loginBtn);
+        this.submitBtn = view.findViewById(R.id.fragment_login_button_submit);
+        this.registerBtn = view.findViewById(R.id.fragment_login_button_register);
+        this.forgotPasswordBtn = view.findViewById(R.id.fragment_login_button_forgot_password);
 
         return view;
 
@@ -57,6 +64,8 @@ public class LoginFragment extends Fragment {
         this.setEmailField();
         this.setPasswordField();
         this.setSubmitBtn();
+        this.setForgotPasswordBtn();
+        this.setRegisterBtn();
 
     }
 
@@ -118,6 +127,44 @@ public class LoginFragment extends Fragment {
         });
 
         this.isFormValid();
+
+    }
+
+    private void setForgotPasswordBtn() {
+
+        this.forgotPasswordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+
+                FragmentActivity activity = getActivity();
+
+                if(activity != null)
+                    Navigation.push(activity, new ForgotPasswordFragment(), bundle, R.id.fragment_guest);
+
+            }
+
+        });
+
+    }
+
+    private void setRegisterBtn() {
+
+        this.registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+
+                FragmentActivity activity = getActivity();
+
+                if(activity != null)
+                    Navigation.push(activity, new RegisterFragment(), bundle, R.id.fragment_guest);
+
+            }
+
+        });
 
     }
 

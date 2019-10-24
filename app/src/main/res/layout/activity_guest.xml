@@ -8,14 +8,14 @@
     tools:context=".Activities.GuestActivity">
 
     <fragment
-        android:id="@+id/fragment"
-        android:name="com.deck.yugioh.Fragment.ForgotPasswordFragment"
+        android:id="@+id/fragment_guest"
+        android:name="com.deck.yugioh.Fragment.ListNotesFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_forgot_password" />
+        tools:layout="@layout/fragment_list_notes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
