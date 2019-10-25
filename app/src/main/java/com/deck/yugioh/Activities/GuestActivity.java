@@ -1,16 +1,13 @@
 package com.deck.yugioh.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.MotionEvent;
 
+import com.deck.yugioh.Activities.Utils.MasterActivity;
 import com.deck.yugioh.Fragment.LoginFragment;
 import com.deck.yugioh.R;
-import com.deck.yugioh.Utils.Helpers.Helpers;
 import com.deck.yugioh.Utils.Navigation.Navigation;
 
-public class GuestActivity extends AppCompatActivity {
+public class GuestActivity extends MasterActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +20,9 @@ public class GuestActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Navigation.push(this, new LoginFragment(), new Bundle(), R.id.fragment_guest);
+        Navigation.push(this, new LoginFragment(), new Bundle(), R.id.activity_guest_fragment);
 
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-
-        Helpers.removeFocusClickOutside(this, event);
-
-        return super.dispatchTouchEvent(event);
-
-    }
 
 }

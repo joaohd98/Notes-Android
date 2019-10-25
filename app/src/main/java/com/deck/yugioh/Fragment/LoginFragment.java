@@ -141,7 +141,7 @@ public class LoginFragment extends Fragment {
                 FragmentActivity activity = getActivity();
 
                 if(activity != null)
-                    Navigation.push(activity, new ForgotPasswordFragment(), bundle, R.id.fragment_guest);
+                    Navigation.push(activity, new ForgotPasswordFragment(), bundle, R.id.activity_guest_fragment);
 
             }
 
@@ -160,7 +160,7 @@ public class LoginFragment extends Fragment {
                 FragmentActivity activity = getActivity();
 
                 if(activity != null)
-                    Navigation.push(activity, new RegisterFragment(), bundle, R.id.fragment_guest);
+                    Navigation.push(activity, new RegisterFragment(), bundle, R.id.activity_guest_fragment);
 
             }
 

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.deck.yugioh.Activities.GuestActivity;
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
@@ -56,8 +57,18 @@ public class ForgotPasswordFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        this.setNavBar();
         this.setEmailField();
         this.setSubmitBtn();
+
+    }
+
+    private void setNavBar() {
+
+        GuestActivity guestActivity = (GuestActivity) getActivity();
+
+        if(guestActivity != null)
+            guestActivity.setActionBar("meu teste", true);
 
     }
 

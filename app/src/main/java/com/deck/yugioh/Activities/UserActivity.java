@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.deck.yugioh.Activities.Utils.MasterActivity;
 import com.deck.yugioh.R;
 
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends MasterActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

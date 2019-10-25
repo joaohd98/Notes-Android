@@ -1,7 +1,5 @@
 package com.deck.yugioh.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +7,6 @@ import android.os.Bundle;
 import com.deck.yugioh.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class SplashScreenActivity extends Activity {
 
