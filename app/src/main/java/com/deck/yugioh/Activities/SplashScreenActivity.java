@@ -2,6 +2,7 @@ package com.deck.yugioh.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,7 +10,10 @@ import com.deck.yugioh.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SplashScreenActivity extends AppCompatActivity {
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class SplashScreenActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,19 +25,28 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        final Activity activity = this;
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        new android.os.Handler().postDelayed(new Runnable() {
+            public void run() {
 
-        Intent intent;
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-        if(user == null)
-            intent = new Intent(this, GuestActivity.class);
+                FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        else
-            intent = new Intent(this, UserActivity.class);
+                Intent intent;
 
-        startActivity(intent);
+                if(user == null)
+                    intent = new Intent(activity, GuestActivity.class);
+
+                else
+                    intent = new Intent(activity, UserActivity.class);
+
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+
+            }
+        }, 2000);
 
     }
 

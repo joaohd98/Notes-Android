@@ -1,4 +1,6 @@
 <resources>
 
+    <!-- SplashScreen -->
+    <string name="activity_splash_screen_title">Notas</string>
 
 </resources>
