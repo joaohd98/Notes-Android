@@ -27,7 +27,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         Intent intent;
 
-        if(user != null)
+        if(user == null)
             intent = new Intent(this, GuestActivity.class);
 
         else
