@@ -58,17 +58,12 @@ public class ForgotPasswordFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        this.setNavBar();
         this.setEmailField();
         this.setSubmitBtn();
 
     }
 
-    private void setNavBar() {
 
-        NavigationBar.setActionBar(getActivity(), "Esquecer a senha", true);
-
-    }
 
 
     private void setEmailField() {

@@ -1,6 +1,5 @@
 package com.deck.yugioh.Activities.Utils;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
@@ -8,7 +7,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.deck.yugioh.Utils.Helpers.Helpers;
 
-@SuppressLint("Registered")
 public abstract class MasterActivity extends AppCompatActivity {
 
     @Override
@@ -51,5 +49,13 @@ public abstract class MasterActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+
+        onBackPressed();
+
+        return true;
+
+    }
 
 }

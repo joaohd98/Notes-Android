@@ -4,6 +4,8 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -20,6 +22,7 @@ import com.deck.yugioh.Activities.Utils.MasterActivity;
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
+import com.deck.yugioh.Fragment.Utils.MasterFragment;
 import com.deck.yugioh.HttpRequest.AuthAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Auth.AuthRequestModel;
@@ -32,7 +35,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import java.util.ArrayList;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends MasterFragment {
 
     private LoadingView loadingView;
 
@@ -65,7 +68,6 @@ public class LoginFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        this.setNavBar();
         this.setEmailField();
         this.setPasswordField();
         this.setSubmitBtn();
@@ -74,7 +76,7 @@ public class LoginFragment extends Fragment {
 
     }
 
-    private void setNavBar() {
+    public void setNavBar() {
 
         NavigationBar.setActionBar(getActivity(), "Login", false);
 
