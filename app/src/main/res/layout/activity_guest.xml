@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/activity_guest_fragment"
-        android:name="com.deck.yugioh.Fragment.BlankFragment"
+        android:name="com.deck.yugioh.Fragment.LoginFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_guest_toolbar"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout="@layout/fragment_blank" />
+        tools:layout="@layout/fragment_login" />
 
     <include
         android:id="@+id/activity_guest_toolbar"
