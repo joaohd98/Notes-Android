@@ -48,6 +48,7 @@ public class LoadingView extends ConstraintLayout {
 
     private void setSchedule() {
 
+        /*
         new Timer().scheduleAtFixedRate(new TimerTask(){
             @Override
             public void run(){
@@ -65,7 +66,7 @@ public class LoadingView extends ConstraintLayout {
             }
 
         }, 0, 1000);
-
+        */
     }
 
     public void show() {

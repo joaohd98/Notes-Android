@@ -14,16 +14,14 @@ import android.view.ViewGroup;
 import com.deck.yugioh.Adapters.NotesAdapter;
 import com.deck.yugioh.Model.Notes.NotesView;
 import com.deck.yugioh.R;
-import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
-import com.marshalchen.ultimaterecyclerview.UltimateViewAdapter;
 
 import java.util.ArrayList;
 
 public class ListNotesFragment extends Fragment {
 
     private ArrayList<NotesView> notes;
-    private UltimateRecyclerView list;
-    private UltimateViewAdapter adapter;
+    private RecyclerView list;
+    private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     public ListNotesFragment() { }

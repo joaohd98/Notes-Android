@@ -9,13 +9,13 @@
 
     <fragment
         android:id="@+id/fragment_guest"
-        android:name="com.deck.yugioh.Fragment.ListNotesFragment"
+        android:name="com.deck.yugioh.Fragment.BlankFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_list_notes" />
+        tools:layout="@layout/fragment_blank" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

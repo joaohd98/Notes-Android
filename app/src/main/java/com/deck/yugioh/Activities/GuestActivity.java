@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
+import com.deck.yugioh.Fragment.LoginFragment;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Helpers.Helpers;
+import com.deck.yugioh.Utils.Navigation.Navigation;
 
 public class GuestActivity extends AppCompatActivity {
 
@@ -20,6 +22,9 @@ public class GuestActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        Navigation.push(this, new LoginFragment(), new Bundle(), R.id.fragment_guest);
+
     }
 
     @Override
