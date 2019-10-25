@@ -21,6 +21,7 @@ import com.deck.yugioh.HttpRequest.RegisterAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Register.RegisterRequestModel;
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.ActionBar.NavigationBar;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -61,12 +62,19 @@ public class RegisterFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        this.setNavBar();
         this.setNameField();
         this.setEmailField();
         this.setPasswordField();
 
         this.setButton();
 
+
+    }
+
+    private void setNavBar() {
+
+        NavigationBar.setActionBar(getActivity(), "Registrar", true);
 
     }
 

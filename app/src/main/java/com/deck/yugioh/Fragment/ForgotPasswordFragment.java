@@ -22,6 +22,7 @@ import com.deck.yugioh.HttpRequest.ForgotPasswordAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.ForgotPassword.ForgotPasswordRequest;
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.ActionBar.NavigationBar;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
@@ -65,12 +66,10 @@ public class ForgotPasswordFragment extends Fragment {
 
     private void setNavBar() {
 
-//        GuestActivity guestActivity = (GuestActivity) getActivity();
-//
-//        if(guestActivity != null)
-//            guestActivity.setActionBar("meu teste", true);
+        NavigationBar.setActionBar(getActivity(), "Esquecer a senha", true);
 
     }
+
 
     private void setEmailField() {
 

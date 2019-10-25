@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.deck.yugioh.Activities.GuestActivity;
+import com.deck.yugioh.Activities.Utils.MasterActivity;
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
@@ -22,6 +24,7 @@ import com.deck.yugioh.HttpRequest.AuthAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Auth.AuthRequestModel;
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.ActionBar.NavigationBar;
 import com.deck.yugioh.Utils.Navigation.Navigation;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.google.firebase.FirebaseNetworkException;
@@ -62,11 +65,18 @@ public class LoginFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        this.setNavBar();
         this.setEmailField();
         this.setPasswordField();
         this.setSubmitBtn();
         this.setForgotPasswordBtn();
         this.setRegisterBtn();
+
+    }
+
+    private void setNavBar() {
+
+        NavigationBar.setActionBar(getActivity(), "Login", false);
 
     }
 

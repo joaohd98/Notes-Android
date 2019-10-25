@@ -38,7 +38,12 @@ public abstract class MasterActivity extends AppCompatActivity {
                 actionBar.setDisplayHomeAsUpEnabled(true);
                 actionBar.setDisplayShowHomeEnabled(true);
 
+            }
 
+            else {
+
+                actionBar.setDisplayHomeAsUpEnabled(false);
+                actionBar.setDisplayShowHomeEnabled(false);
 
             }
 

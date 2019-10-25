@@ -29,12 +29,4 @@ public class GuestActivity extends MasterActivity {
 
     }
 
-
-    public void setNavBar() {
-
-
-
-    }
-
-
 }
