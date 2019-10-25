@@ -65,10 +65,10 @@ public class ForgotPasswordFragment extends Fragment {
 
     private void setNavBar() {
 
-        GuestActivity guestActivity = (GuestActivity) getActivity();
-
-        if(guestActivity != null)
-            guestActivity.setActionBar("meu teste", true);
+//        GuestActivity guestActivity = (GuestActivity) getActivity();
+//
+//        if(guestActivity != null)
+//            guestActivity.setActionBar("meu teste", true);
 
     }
 

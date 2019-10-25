@@ -37,8 +37,11 @@ public class SplashScreenActivity extends Activity {
                 else
                     intent = new Intent(activity, UserActivity.class);
 
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
                 startActivity(intent);
                 overridePendingTransition(0, 0);
+                finish();
 
             }
         }, 2000);

@@ -2,6 +2,8 @@ package com.deck.yugioh.Activities;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.deck.yugioh.Activities.Utils.MasterActivity;
 import com.deck.yugioh.Fragment.LoginFragment;
 import com.deck.yugioh.R;
@@ -14,6 +16,9 @@ public class GuestActivity extends MasterActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest);
 
+        Toolbar toolbar = findViewById(R.id.activity_guest_toolbar);
+        setSupportActionBar(toolbar);
+
     }
 
     @Override
@@ -21,6 +26,13 @@ public class GuestActivity extends MasterActivity {
         super.onStart();
 
         Navigation.push(this, new LoginFragment(), new Bundle(), R.id.activity_guest_fragment);
+
+    }
+
+
+    public void setNavBar() {
+
+
 
     }
 
