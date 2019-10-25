@@ -1,4 +1,4 @@
-package com.deck.yugioh.Alerts;
+package com.deck.yugioh.Components;
 
 import android.app.AlertDialog;
 import android.content.Context;

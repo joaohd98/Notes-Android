@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.deck.yugioh.Alerts.DialogView;
+import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
 import com.deck.yugioh.HttpRequest.AuthAPI;
