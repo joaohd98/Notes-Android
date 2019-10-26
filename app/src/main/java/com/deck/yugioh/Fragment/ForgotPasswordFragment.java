@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.deck.yugioh.Activities.GuestActivity;
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
+import com.deck.yugioh.Fragment.Utils.MasterFragment;
 import com.deck.yugioh.HttpRequest.ForgotPasswordAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.ForgotPassword.ForgotPasswordRequest;
@@ -29,8 +29,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 import java.util.ArrayList;
 
-
-public class ForgotPasswordFragment extends Fragment {
+public class ForgotPasswordFragment extends MasterFragment {
 
     private LoadingView loadingView;
 
@@ -58,8 +57,15 @@ public class ForgotPasswordFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        this.setNavBar();
         this.setEmailField();
         this.setSubmitBtn();
+
+    }
+
+     public void setNavBar() {
+
+        NavigationBar.setActionBar(getActivity(), "Esquecer a senha", true);
 
     }
 
@@ -109,12 +115,14 @@ public class ForgotPasswordFragment extends Fragment {
         ForgotPasswordAPI forgotPasswordAPI = new ForgotPasswordAPI();
 
         forgotPasswordAPI.callRequest(request, new RequestCallBack() {
+
             @Override
             public void success() {
 
                 loadingView.hide();
 
                 Toast.makeText(getContext(), "Sucesso", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override

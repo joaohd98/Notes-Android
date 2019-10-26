@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
+import com.deck.yugioh.Fragment.Utils.MasterFragment;
 import com.deck.yugioh.HttpRequest.RegisterAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Register.RegisterRequestModel;
@@ -28,7 +29,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import java.util.ArrayList;
 
-public class RegisterFragment extends Fragment {
+public class RegisterFragment extends MasterFragment {
 
     private LoadingView loadingView;
 
@@ -69,10 +70,9 @@ public class RegisterFragment extends Fragment {
 
         this.setButton();
 
-
     }
 
-    private void setNavBar() {
+    public void setNavBar() {
 
         NavigationBar.setActionBar(getActivity(), "Registrar", true);
 

@@ -17,24 +17,16 @@ public class Navigation {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         transaction.replace(id, fragment);
-        transaction.addToBackStack(null);
+        transaction.addToBackStack(fragment.toString());
         transaction.commit();
 
     }
 
-    public static void push(FragmentManager fragmentManager, Fragment fragment, Bundle bundle, int id) {
+    public static void back(FragmentActivity activity) {
 
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentManager manager = activity.getSupportFragmentManager();
 
-        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-        transaction.replace(id, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-
-    }
-
-    public static void back() {
+        manager.popBackStack();
 
     }
 

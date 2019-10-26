@@ -16,6 +16,7 @@ public class GuestActivity extends MasterActivity {
 
         Toolbar toolbar = findViewById(R.id.activity_guest_toolbar);
         setSupportActionBar(toolbar);
+        setNavBar(R.id.activity_guest_fragment);
 
     }
 

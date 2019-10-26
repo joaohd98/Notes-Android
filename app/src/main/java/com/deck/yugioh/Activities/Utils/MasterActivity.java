@@ -5,7 +5,11 @@ import android.view.MotionEvent;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
+import com.deck.yugioh.Fragment.Utils.MasterFragment;
 import com.deck.yugioh.Utils.Helpers.Helpers;
+import com.deck.yugioh.Utils.Navigation.Navigation;
 
 public abstract class MasterActivity extends AppCompatActivity {
 
@@ -21,6 +25,24 @@ public abstract class MasterActivity extends AppCompatActivity {
 
         return super.dispatchTouchEvent(event);
 
+    }
+
+    public void setNavBar(final int id) {
+
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+
+            @Override
+            public void onBackStackChanged() {
+
+                MasterFragment fragment = (MasterFragment) getSupportFragmentManager().findFragmentById(id);
+
+                if(fragment != null) {
+                    fragment.setNavBar();
+                }
+
+            }
+
+        });
     }
 
     public void setActionBar(String title, boolean showBackButton) {
@@ -52,7 +74,7 @@ public abstract class MasterActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
 
-        onBackPressed();
+        Navigation.back(this);
         return true;
 
     }
