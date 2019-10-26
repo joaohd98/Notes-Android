@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.deck.yugioh.Activities.UserActivity;
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
@@ -19,6 +20,8 @@ import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Register.RegisterRequestModel;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.ActionBar.NavigationBar;
+import com.deck.yugioh.Utils.Helpers.Helpers;
+import com.deck.yugioh.Utils.Navigation.Navigation;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -59,7 +62,6 @@ public class RegisterFragment extends MasterFragment {
     public void onStart() {
         super.onStart();
 
-        this.setNavBar();
         this.setNameField();
         this.setEmailField();
         this.setPasswordField();
@@ -166,7 +168,7 @@ public class RegisterFragment extends MasterFragment {
 
                         loadingView.hide();
 
-                        Toast.makeText(getContext(), "Sucesso", Toast.LENGTH_SHORT).show();
+                        Navigation.setActivity(getActivity(), UserActivity.class);
 
                     }
 
@@ -219,21 +221,8 @@ public class RegisterFragment extends MasterFragment {
 
     private void checkIsValid() {
 
-        if(this.inputName.isValid() && this.inputEmail.isValid() && this.inputPassword.isValid()) {
-
-            this.btnSubmit.setAlpha(1);
-            this.btnSubmit.setClickable(true);
-
-        }
-
-        else {
-
-            this.btnSubmit.setAlpha(.5f);
-            this.btnSubmit.setClickable(false);
-
-        }
+        Helpers.checkIsValid(this.btnSubmit, this.inputName.isValid() && this.inputEmail.isValid() && this.inputPassword.isValid());
 
     }
-
 
 }

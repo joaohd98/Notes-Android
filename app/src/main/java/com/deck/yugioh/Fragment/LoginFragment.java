@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.deck.yugioh.Activities.UserActivity;
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
@@ -21,6 +22,7 @@ import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Auth.AuthRequestModel;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.ActionBar.NavigationBar;
+import com.deck.yugioh.Utils.Helpers.Helpers;
 import com.deck.yugioh.Utils.Navigation.Navigation;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.google.firebase.FirebaseNetworkException;
@@ -174,24 +176,6 @@ public class LoginFragment extends MasterFragment {
 
     }
 
-    private void isFormValid() {
-
-        if(emailFrag.isValid() && passwordFrag.isValid()) {
-
-            this.submitBtn.setAlpha(1);
-            this.submitBtn.setClickable(true);
-
-        }
-
-        else {
-
-            this.submitBtn.setAlpha(.5f);
-            this.submitBtn.setClickable(false);
-
-        }
-
-    }
-
     private void submitForm() {
 
         this.loadingView.show();
@@ -207,7 +191,7 @@ public class LoginFragment extends MasterFragment {
 
                 loadingView.hide();
 
-                Toast.makeText(getContext(), "Sucesso", Toast.LENGTH_SHORT).show();
+                Navigation.setActivity(getActivity(), UserActivity.class);
 
             }
 
@@ -251,6 +235,12 @@ public class LoginFragment extends MasterFragment {
             }
 
         });
+
+    }
+
+    private void isFormValid() {
+
+        Helpers.checkIsValid(this.submitBtn, this.emailFrag.isValid() && this.passwordFrag.isValid());
 
     }
 

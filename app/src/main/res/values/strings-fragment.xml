@@ -50,6 +50,7 @@
     <string name="fragment_forgot_password_email_validation_invalid">Email inválido.</string>
     <string name="fragment_forgot_password_button">Enviar nova senha</string>
     <string name="fragment_forgot_password_alert_title">Atenção</string>
+    <string name="fragment_forgot_password_alert_message_success">Link com a senha enviada para o email com sucesso.</string>
     <string name="fragment_forgot_password_alert_message_email">Email não encontrado.</string>
     <string name="fragment_forgot_password_alert_message_no_internet">Sem conexão com a internet.</string>
     <string name="fragment_forgot_password_alert_message_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>

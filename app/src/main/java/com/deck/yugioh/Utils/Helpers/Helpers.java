@@ -11,9 +11,32 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 
+import com.deck.yugioh.Components.InputView;
+import com.deck.yugioh.R;
+
 public class Helpers {
+
+    public static void checkIsValid(Button btn, Boolean isValid) {
+
+        if(isValid) {
+
+
+            btn.setAlpha(1);
+            btn.setClickable(true);
+
+        }
+
+        else {
+
+            btn.setAlpha(.3f);
+            btn.setClickable(false);
+
+        }
+
+    }
 
     public static void setTouchable(Context context, boolean enabled) {
 
@@ -21,7 +44,6 @@ public class Helpers {
 
         if(enabled)
             window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
 
         else
             window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

@@ -1,5 +1,7 @@
 package com.deck.yugioh.Utils.Navigation;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,7 +32,16 @@ public class Navigation {
 
     }
 
-    public static void setPage() {
+    public static void setActivity(Activity activity, Class c) {
+
+        if(activity != null) {
+
+            Intent intent = new Intent(activity, c);
+
+            activity.startActivity(intent);
+            activity.finish();
+
+        }
 
     }
 

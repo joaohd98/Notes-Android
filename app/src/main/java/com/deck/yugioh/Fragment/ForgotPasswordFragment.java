@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.deck.yugioh.Activities.UserActivity;
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
@@ -21,6 +22,8 @@ import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.ForgotPassword.ForgotPasswordRequest;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.ActionBar.NavigationBar;
+import com.deck.yugioh.Utils.Helpers.Helpers;
+import com.deck.yugioh.Utils.Navigation.Navigation;
 import com.deck.yugioh.Utils.Validators.ValidatorModel;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
@@ -55,7 +58,6 @@ public class ForgotPasswordFragment extends MasterFragment {
     public void onStart() {
         super.onStart();
 
-        this.setNavBar();
         this.setEmailField();
         this.setSubmitBtn();
 
@@ -119,7 +121,20 @@ public class ForgotPasswordFragment extends MasterFragment {
 
                 loadingView.hide();
 
-                Toast.makeText(getContext(), "Sucesso", Toast.LENGTH_SHORT).show();
+
+                Context context = getContext();
+
+                if(context != null) {
+
+                    DialogView dialog = new DialogView(getContext());
+
+                    dialog.setTitle(context.getString(R.string.fragment_forgot_password_alert_title));
+                    dialog.setInfo(context.getString(R.string.fragment_forgot_password_alert_message_success));
+                    dialog.setBtnSuccess(context.getString(R.string.fragment_forgot_password_alert_button));
+
+                    dialog.show();
+
+                }
 
             }
 
@@ -169,19 +184,7 @@ public class ForgotPasswordFragment extends MasterFragment {
 
     private void isFormValid() {
 
-        if(inputEmail.isValid()) {
-
-            this.btnSubmit.setAlpha(1);
-            this.btnSubmit.setClickable(true);
-
-        }
-
-        else {
-
-            this.btnSubmit.setAlpha(.5f);
-            this.btnSubmit.setClickable(false);
-
-        }
+        Helpers.checkIsValid(this.btnSubmit, this.inputEmail.isValid());
 
     }
 
