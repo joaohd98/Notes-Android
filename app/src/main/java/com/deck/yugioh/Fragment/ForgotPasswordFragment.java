@@ -63,9 +63,6 @@ public class ForgotPasswordFragment extends Fragment {
 
     }
 
-
-
-
     private void setEmailField() {
 
         int type = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;

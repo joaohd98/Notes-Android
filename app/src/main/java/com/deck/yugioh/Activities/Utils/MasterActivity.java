@@ -53,7 +53,6 @@ public abstract class MasterActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
 
         onBackPressed();
-
         return true;
 
     }
