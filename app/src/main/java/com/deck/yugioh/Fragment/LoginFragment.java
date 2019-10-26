@@ -1,14 +1,7 @@
 package com.deck.yugioh.Fragment;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.deck.yugioh.Activities.GuestActivity;
-import com.deck.yugioh.Activities.Utils.MasterActivity;
+import androidx.fragment.app.FragmentActivity;
+
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;

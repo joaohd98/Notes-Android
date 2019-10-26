@@ -2,7 +2,6 @@ package com.deck.yugioh.Components;
 
 import android.content.Context;
 import android.graphics.drawable.LayerDrawable;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;

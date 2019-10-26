@@ -10,9 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Helpers.Helpers;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class LoadingView extends ConstraintLayout {
 
     private ConstraintLayout constraintLayout;
