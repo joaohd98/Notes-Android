@@ -8,9 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.deck.yugioh.Activities.UserActivity;
+import com.deck.yugioh.Activities.SignInActivity;
 import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.Components.LoadingView;
@@ -168,7 +167,7 @@ public class RegisterFragment extends MasterFragment {
 
                         loadingView.hide();
 
-                        Navigation.setActivity(getActivity(), UserActivity.class);
+                        Navigation.setActivity(getActivity(), SignInActivity.class);
 
                     }
 

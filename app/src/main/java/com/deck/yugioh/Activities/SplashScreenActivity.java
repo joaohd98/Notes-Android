@@ -35,7 +35,7 @@ public class SplashScreenActivity extends Activity {
                     intent = new Intent(activity, GuestActivity.class);
 
                 else
-                    intent = new Intent(activity, UserActivity.class);
+                    intent = new Intent(activity, SignInActivity.class);
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 
