@@ -66,11 +66,17 @@ public class ListNotesFragment extends Fragment {
         /*
          * SET SWIPE CONTROLLER
          */
-        final SwipeController swipeController = new SwipeController(new SwipeControllerActions() {
+        final SwipeController swipeController = new SwipeController(getContext(), new SwipeControllerActions() {
             @Override
             public void onRightClicked(int position) {
 
             }
+
+            @Override
+            public void onLeftClicked(int position) {
+
+            }
+
         });
 
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
