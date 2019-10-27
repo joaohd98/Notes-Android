@@ -2,6 +2,7 @@ package com.deck.yugioh.Activities;
 
 import android.os.Bundle;
 
+import com.deck.yugioh.Activities.Utils.MasterActivity;
 import com.deck.yugioh.R;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -14,12 +15,11 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-public class SignInActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class SignInActivity extends MasterActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +37,20 @@ public class SignInActivity extends AppCompatActivity implements NavigationView.
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
     public void onBackPressed() {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+
+        if (drawer.isDrawerOpen(GravityCompat.START))
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+
+        else
             super.onBackPressed();
-        }
+
 
     }
 
