@@ -7,6 +7,7 @@ import com.deck.yugioh.R;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
@@ -24,6 +25,7 @@ public class SignInActivity extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
         Toolbar toolbar = findViewById(R.id.activity_sign_in_toolbar);
         setSupportActionBar(toolbar);
 
@@ -51,43 +53,37 @@ public class SignInActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.sign_in, menu);
+
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.add, menu);
+
         return true;
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_add) {
+            return false;
         }
 
         return super.onOptionsItemSelected(item);
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_add) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_out) {
 
         }
 

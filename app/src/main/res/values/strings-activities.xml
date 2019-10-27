@@ -3,4 +3,17 @@
     <!-- SplashScreen -->
     <string name="activity_splash_screen_title">Notas</string>
 
+    <!-- Sign in -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_add">Adicionar</string>
+
+    <string name="activity_sign_in_menu_line">Usuário</string>
+    <string name="activity_sign_in_menu_add">Adicionar nota</string>
+    <string name="activity_sign_in_menu_out">Sair</string>
+
+
 </resources>

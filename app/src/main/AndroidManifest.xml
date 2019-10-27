@@ -10,9 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.SignInActivity"
-            android:label="@string/title_activity_sign_in"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".Activities.SignInActivity"/>
         <activity android:name=".Activities.GuestActivity" />
         <activity android:name=".Activities.SplashScreenActivity">
             <intent-filter>
