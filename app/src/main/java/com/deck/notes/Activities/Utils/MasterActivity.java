@@ -2,6 +2,7 @@ package com.deck.notes.Activities.Utils;
 
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -58,12 +59,22 @@ public abstract class MasterActivity extends AppCompatActivity {
 
             if(showBackButton) {
 
-                if(toggle != null)
+                if(toggle != null) {
+
                     this.toggle.setDrawerIndicatorEnabled(false);
+
+                    this.toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            onSupportNavigateUp();
+                        }
+                    });
+
+                }
 
                 actionBar.setDisplayHomeAsUpEnabled(true);
                 actionBar.setDisplayShowHomeEnabled(true);
-                
+
             }
 
             else {
@@ -71,8 +82,16 @@ public abstract class MasterActivity extends AppCompatActivity {
                 actionBar.setDisplayHomeAsUpEnabled(false);
                 actionBar.setDisplayShowHomeEnabled(false);
 
-                if(toggle != null)
+                if(toggle != null) {
+                    
                     this.toggle.setDrawerIndicatorEnabled(true);
+
+                    this.toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) { }
+                    });
+
+                }
 
             }
 
