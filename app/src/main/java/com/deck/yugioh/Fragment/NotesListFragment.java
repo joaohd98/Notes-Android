@@ -2,6 +2,7 @@ package com.deck.yugioh.Fragment;
 
 
 import android.accounts.NetworkErrorException;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -22,10 +24,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.deck.yugioh.Activities.SignInActivity;
 import com.deck.yugioh.Adapters.NotesAdapter;
+import com.deck.yugioh.Components.DialogView;
 import com.deck.yugioh.Components.Swipe.SwipeController;
 import com.deck.yugioh.Components.Swipe.SwipeControllerActions;
 import com.deck.yugioh.Fragment.Utils.MasterFragment;
 import com.deck.yugioh.HttpRequest.NotesAPI;
+import com.deck.yugioh.HttpRequest.NotesDeleteAPI;
+import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.HttpRequest.Utils.RequestWithResponseCallback;
 import com.deck.yugioh.Model.Notes.NotesView;
 import com.deck.yugioh.R;
@@ -205,10 +210,78 @@ public class NotesListFragment extends MasterFragment {
             @Override
             public void onRightClicked(int position) {
 
+                setFragmentStatus(Status.LOADING);
+
+                NotesDeleteAPI deleteAPI = new NotesDeleteAPI(user.getUid());
+
+                notes.remove(position);
+
+                deleteAPI.callRequest(notes, new RequestCallBack() {
+
+                    @Override
+                    public void success() {
+
+                        setFragmentStatus(Status.SUCCESS);
+
+                        Toast.makeText(getContext(), R.string.fragment_list_notes_success_delete, Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void error(Exception exception) {
+
+                        setFragmentStatus(Status.SUCCESS);
+
+                        Context context = getContext();
+
+                        if(context != null) {
+
+                            DialogView dialog = new DialogView(getContext());
+
+                            dialog.setTitle(context.getString(R.string.fragment_form_notes_alert_title));
+
+                            try {
+
+                                throw exception;
+
+                            } catch (NetworkErrorException ignore) {
+
+                                dialog.setInfo(context.getString(R.string.fragment_form_notes_alert_message_no_internet));
+
+
+                            } catch (Exception ignore) {
+
+                                dialog.setInfo(context.getString(R.string.fragment_form_notes_alert_message_generic));
+
+                            }
+
+                            dialog.setBtnSuccess(context.getString(R.string.fragment_form_notes_alert_button));
+
+                            dialog.show();
+
+                        }
+                    }
+
+                });
+
             }
 
             @Override
             public void onLeftClicked(int position) {
+
+                NotesView note = notes.get(position);
+
+                Bundle bundle = new Bundle();
+
+                bundle.putBoolean(getString(R.string.fragment_form_notes_bundle_is_updating), true);
+                bundle.putString(getString(R.string.fragment_form_notes_bundle_id), note.getId());
+                bundle.putString(getString(R.string.fragment_form_notes_bundle_title), note.getTitle());
+                bundle.putString(getString(R.string.fragment_form_notes_bundle_text), note.getMessage());
+
+                FragmentActivity activity = getActivity();
+
+                if(activity != null)
+                    Navigation.push(activity, new NotesFormFragment(), bundle, R.id.activity_sign_in_fragment);
 
             }
 

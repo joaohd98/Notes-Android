@@ -39,6 +39,8 @@ import java.util.ArrayList;
 
 public class NotesFormFragment extends MasterFragment {
 
+    private boolean isUpdate;
+    private String idNote;
     private LoadingView loadingView;
 
     private InputView inputTitle;
@@ -63,12 +65,18 @@ public class NotesFormFragment extends MasterFragment {
 
         Bundle bundle = this.getArguments();
 
-        if(bundle != null && bundle.getBoolean("isUpdating")) {
+        if(bundle != null && bundle.getBoolean(getString(R.string.fragment_form_notes_bundle_is_updating))) {
 
             TextView txtTitle = view.findViewById(R.id.fragment_form_notes_title);
 
             txtTitle.setText(R.string.fragment_form_notes_title_edit);
             this.btnSubmit.setText(R.string.fragment_form_notes_button_edit);
+
+            this.idNote = bundle.getString(getString(R.string.fragment_form_notes_bundle_id));
+            this.inputTitle.setInputValue(bundle.getString(getString(R.string.fragment_form_notes_bundle_title)));
+            this.inputMessage.setInputValue(bundle.getString(getString(R.string.fragment_form_notes_bundle_text)));
+
+            this.isUpdate = true;
 
         }
 
@@ -141,7 +149,15 @@ public class NotesFormFragment extends MasterFragment {
 
     private void setBtnSubmit() {
 
-        this.btnSubmit.setOnClickListener(new View.OnClickListener() {
+        this.btnSubmit.setOnClickListener(isUpdate ? editNote() : addNote());
+
+        this.isFormValid();
+
+    }
+
+    private View.OnClickListener addNote() {
+
+        return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -150,11 +166,11 @@ public class NotesFormFragment extends MasterFragment {
                 final String uuid = FirebaseAuth.getInstance().getUid();
 
                 NotesView notesView = new NotesView(
-                    "11",
-                    inputTitle.getInputValue(),
-                    inputMessage.getInputValue(),
-                    Helpers.getCurrentDate(),
-                    uuid
+                        "11",
+                        inputTitle.getInputValue(),
+                        inputMessage.getInputValue(),
+                        Helpers.getCurrentDate(),
+                        uuid
                 );
 
                 NotesAddAPI api = new NotesAddAPI(uuid);
@@ -166,7 +182,7 @@ public class NotesFormFragment extends MasterFragment {
 
                         loadingView.hide();
 
-                        Toast.makeText(getContext(), R.string.fragment_form_notes_alert_message_success, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.fragment_form_notes_alert_message_add_success, Toast.LENGTH_SHORT).show();
 
                         FragmentActivity activity = getActivity();
 
@@ -213,9 +229,17 @@ public class NotesFormFragment extends MasterFragment {
 
                 });
             }
-        });
+        };
+    }
 
-        this.isFormValid();
+    private View.OnClickListener editNote() {
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        };
 
     }
 
