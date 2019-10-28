@@ -24,14 +24,14 @@
 
         <fragment
             android:id="@+id/activity_sign_in_fragment"
-            android:name="com.deck.yugioh.Fragment.NotesListFragment"
+            android:name="com.deck.yugioh.Fragment.NotesFormFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_sign_in_toolbar"
-            tools:layout="@layout/fragment_notes_list" />
+            tools:layout="@layout/fragment_notes_form" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

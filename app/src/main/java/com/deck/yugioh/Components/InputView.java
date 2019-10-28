@@ -6,8 +6,11 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.text.method.ScrollingMovementMethod;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -78,9 +81,20 @@ public class InputView extends ConstraintLayout {
 
         }
 
+        else if(type == InputType.TYPE_TEXT_FLAG_MULTI_LINE) {
+
+            this.input.setSingleLine(false);
+            this.input.setImeOptions(EditorInfo.IME_FLAG_NO_ENTER_ACTION);
+            this.input.setLines(5);
+            this.input.setMaxLines(5);
+            this.input.setGravity(Gravity.TOP | Gravity.START);
+
+        }
+
         else
             this.input.setInputType(InputType.TYPE_CLASS_TEXT | type);
 
+        
         this.input.setHint(placeholder);
         this.label.setText(label);
         this.rules = rules;

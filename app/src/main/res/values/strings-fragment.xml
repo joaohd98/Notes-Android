@@ -68,4 +68,20 @@
     <string name="fragment_show_notes_bundle_title">title</string>
     <string name="fragment_show_notes_bundle_date">date</string>
     <string name="fragment_show_notes_bundle_message">message</string>
+
+    <!-- Form Notes -->
+    <string name="fragment_form_notes_title_add">Adicionar Nota</string>
+    <string name="fragment_form_notes_title_edit">Editar Nota</string>
+    <string name="fragment_form_notes_input_title_label">Título</string>
+    <string name="fragment_form_notes_input_title_placeholder">Digite o título</string>
+    <string name="fragment_form_notes_input_title_validation_required">Campo título é obrigatório.</string>
+    <string name="fragment_form_notes_input_message_label">Texto</string>
+    <string name="fragment_form_notes_input_message_placeholder">Digite o texto</string>
+    <string name="fragment_form_notes_input_message_validation_required">Campo texto é obrigatório.</string>
+    <string name="fragment_form_notes_alert_title">Atenção</string>
+    <string name="fragment_form_notes_alert_message_no_internet">Sem conexão com a internet.</string>
+    <string name="fragment_form_notes_alert_message_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
+    <string name="fragment_form_notes_button_add">Adicionar Nota</string>
+    <string name="fragment_form_notes_button_edit">Atualizar Nota</string>
+
 </resources>
