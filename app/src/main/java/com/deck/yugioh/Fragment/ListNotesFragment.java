@@ -24,13 +24,21 @@ import com.deck.yugioh.Model.Notes.NotesView;
 import com.deck.yugioh.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+enum Status {
+
+    LOADING,
+    ERROR,
+    EMPTY,
+    SUCCESS
+
+}
+
 public class ListNotesFragment extends Fragment {
 
+    private Status status = Status.LOADING;
     private FirebaseUser user;
     private ArrayList<NotesView> notes;
     private RecyclerView list;
@@ -43,10 +51,9 @@ public class ListNotesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list_notes, container, false);
 
         this.user = FirebaseAuth.getInstance().getCurrentUser();
+//        this.list = view.findViewById(R.id.fragment_list_notes_recycle_view);
 
-        this.list = view.findViewById(R.id.fragment_list_notes_recycle_view);
-
-        this.callNotes();
+//        this.callNotes();
 
         return view;
 
@@ -67,6 +74,7 @@ public class ListNotesFragment extends Fragment {
             public void error() {
                 Toast.makeText(getContext(), "Erro", Toast.LENGTH_SHORT).show();
             }
+
         });
 
     }
