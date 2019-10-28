@@ -6,12 +6,14 @@ import com.deck.yugioh.Activities.Utils.MasterActivity;
 import com.deck.yugioh.Fragment.NotesFormFragment;
 import com.deck.yugioh.R;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 
 import android.view.MenuItem;
 
 import com.deck.yugioh.Utils.Navigation.Navigation;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -43,9 +45,8 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
 
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
 
@@ -54,6 +55,9 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
         }
 
         else if (id == R.id.nav_out) {
+
+            FirebaseAuth.getInstance().signOut();
+            Navigation.setActivity(this, GuestActivity.class);
 
         }
 
