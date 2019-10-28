@@ -1,11 +1,14 @@
 package com.deck.yugioh.Fragment;
 
 
+import android.accounts.NetworkErrorException;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -45,6 +48,7 @@ public class ListNotesFragment extends Fragment {
     private ConstraintLayout notesLayout;
     private ConstraintLayout loadingLayout;
     private ConstraintLayout errorLayout;
+    private TextView errorLayoutMessage;
 
     public ListNotesFragment() { }
 
@@ -59,7 +63,19 @@ public class ListNotesFragment extends Fragment {
         this.errorLayout = view.findViewById(R.id.fragment_list_notes_error);
         this.loadingLayout = view.findViewById(R.id.fragment_list_notes_loading);
 
+        this.errorLayout = view.findViewById(R.id.fragment_list_notes_error);
+        this.errorLayoutMessage = view.findViewById(R.id.fragment_list_notes_error_message);
+
         this.list = view.findViewById(R.id.fragment_list_notes_recycle_view);
+
+        Button errorLayoutButton = view.findViewById(R.id.fragment_list_notes_error_button);
+
+        errorLayoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callNotes();
+            }
+        });
 
         this.callNotes();
 
@@ -114,8 +130,24 @@ public class ListNotesFragment extends Fragment {
             }
 
             @Override
-            public void error() {
+            public void error(Exception ex) {
+
                 setFragmentStatus(Status.ERROR);
+
+                try {
+
+                    throw ex;
+
+                } catch (NetworkErrorException ignore) {
+
+                    errorLayoutMessage.setText(R.string.fragment_list_notes_error_message_no_internet);
+
+                } catch (Exception ignore) {
+
+                    errorLayoutMessage.setText(R.string.fragment_list_notes_error_message_generic);
+
+                }
+
             }
 
         });

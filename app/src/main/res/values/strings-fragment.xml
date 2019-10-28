@@ -61,7 +61,7 @@
     <string name="fragment_list_notes_title">Notas</string>
     <string name="fragment_list_notes_error_title">Atenção</string>
     <string name="fragment_list_notes_error_message_no_internet">Sem conexão com a internet.</string>
-    <string name="fragment_list_notes_error_message_generico">Ocorreu um erro interno. Tente novamente mais tarde.</string>
+    <string name="fragment_list_notes_error_message_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
     <string name="fragment_list_notes_error_button">Tentar Novamente</string>
 
 </resources>

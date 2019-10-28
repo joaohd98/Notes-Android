@@ -1,5 +1,7 @@
 package com.deck.yugioh.HttpRequest;
 
+import android.accounts.NetworkErrorException;
+
 import androidx.annotation.NonNull;
 
 import com.deck.yugioh.HttpRequest.Utils.RequestWithResponse;
@@ -16,36 +18,66 @@ import java.util.ArrayList;
 public class NotesAPI implements RequestWithResponse<String, ArrayList<NotesView>> {
 
     private DatabaseReference reference = FirebaseDatabase.getInstance().getReference("notes");
+    private boolean internetConnection;
+    private ValueEventListener listener;
 
     @Override
     public void callRequest(String object, final RequestWithResponseCallback<ArrayList<NotesView>> callback) {
 
-        this.reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        this.internetConnection = false;
 
-                ArrayList<NotesView> list = new ArrayList<>();
+        if(this.listener == null) {
 
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    list.add(postSnapshot.getValue(NotesView.class));
+            this.listener = new ValueEventListener() {
+
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    ArrayList<NotesView> list = new ArrayList<>();
+
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
+                        list.add(postSnapshot.getValue(NotesView.class));
+
+                    internetConnection = true;
+
+                    callback.success(list);
+
                 }
 
-                callback.success(list);
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
+                    internetConnection = true;
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                    callback.error(databaseError.toException());
 
-                callback.error();
+                }
 
-            }
+            };
 
-        });
+        }
+
+        new android.os.Handler().postDelayed(new Runnable() {
+
+             @Override
+             public void run() {
+
+                 if(!internetConnection) {
+
+                     reference.removeEventListener(listener);
+                     callback.error(new NetworkErrorException());
+
+                 }
+
+             }
+
+        }, 20000);
+
+
+        reference.removeEventListener(this.listener);
+        reference.addValueEventListener(this.listener);
 
     }
-
-
 
 
 }
