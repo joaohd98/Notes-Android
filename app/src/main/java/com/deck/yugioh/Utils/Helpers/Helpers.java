@@ -16,11 +16,20 @@ import android.widget.EditText;
 
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Helpers {
+
+    public static DatabaseReference getDatabaseReference(String uuid, String node) {
+
+        return FirebaseDatabase.getInstance().getReference().child(uuid).child(node);
+
+    }
 
     public static String getCurrentDate() {
 

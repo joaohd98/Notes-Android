@@ -10,6 +10,7 @@ import com.deck.yugioh.HttpRequest.Utils.Request;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.Model.Notes.NotesEditView;
 import com.deck.yugioh.Model.Notes.NotesView;
+import com.deck.yugioh.Utils.Helpers.Helpers;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +27,7 @@ public class NotesEditAPI implements Request<NotesEditView> {
 
     public NotesEditAPI(String uuid) {
 
-        this.reference = FirebaseDatabase.getInstance().getReference().child(uuid).child("notes");
+        this.reference = Helpers.getDatabaseReference(uuid, "notes");
 
     }
 

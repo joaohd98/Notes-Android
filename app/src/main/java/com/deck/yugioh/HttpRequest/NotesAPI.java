@@ -7,23 +7,23 @@ import androidx.annotation.NonNull;
 import com.deck.yugioh.HttpRequest.Utils.RequestWithResponse;
 import com.deck.yugioh.HttpRequest.Utils.RequestWithResponseCallback;
 import com.deck.yugioh.Model.Notes.NotesView;
+import com.deck.yugioh.Utils.Helpers.Helpers;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class NotesAPI implements RequestWithResponse<Object, ArrayList<NotesView>> {
 
-    private DatabaseReference reference;
+    private Query reference;
     private boolean internetConnection;
     private ValueEventListener listener;
 
     public NotesAPI(String uuid) {
 
-        this.reference = FirebaseDatabase.getInstance().getReference().child(uuid).child("notes");
+        this.reference = Helpers.getDatabaseReference(uuid, "notes");
 
     }
 
