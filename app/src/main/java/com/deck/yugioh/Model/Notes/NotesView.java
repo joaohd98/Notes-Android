@@ -6,14 +6,16 @@ public class NotesView {
     private String title;
     private String message;
     private String date;
+    private String createdBy;
 
     public NotesView() { }
 
-    public NotesView(String id, String title, String message, String date) {
+    public NotesView(String id, String title, String message, String date, String createdBy) {
         this.id = id;
         this.title = title;
         this.message = message;
         this.date = date;
+        this.createdBy = createdBy;
     }
 
     public String getId() {
@@ -46,5 +48,13 @@ public class NotesView {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 }

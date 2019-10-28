@@ -79,8 +79,10 @@
     <string name="fragment_form_notes_input_message_placeholder">Digite o texto</string>
     <string name="fragment_form_notes_input_message_validation_required">Campo texto é obrigatório.</string>
     <string name="fragment_form_notes_alert_title">Atenção</string>
+    <string name="fragment_form_notes_alert_message_success">Nota adicionada com sucesso.</string>
     <string name="fragment_form_notes_alert_message_no_internet">Sem conexão com a internet.</string>
     <string name="fragment_form_notes_alert_message_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
+    <string name="fragment_form_notes_alert_button">OK</string>
     <string name="fragment_form_notes_button_add">Adicionar Nota</string>
     <string name="fragment_form_notes_button_edit">Atualizar Nota</string>
 

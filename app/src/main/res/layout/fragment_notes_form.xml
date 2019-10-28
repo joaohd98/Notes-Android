@@ -38,7 +38,6 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="20dp">
 
-
                 </com.deck.yugioh.Components.InputView>
 
                 <com.deck.yugioh.Components.InputView
@@ -66,4 +65,9 @@
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.deck.yugioh.Components.LoadingView
+        android:id="@+id/fragment_form_notes_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>

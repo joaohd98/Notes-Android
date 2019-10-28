@@ -17,7 +17,20 @@ import android.widget.EditText;
 import com.deck.yugioh.Components.InputView;
 import com.deck.yugioh.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Helpers {
+
+    public static String getCurrentDate() {
+
+        SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy 'ás' HH:mm");
+        Date date = new Date(System.currentTimeMillis());
+
+        return formatter.format(date);
+
+
+    }
 
     public static void checkIsValid(Button btn, Boolean isValid) {
 
