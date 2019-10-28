@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -12,6 +13,8 @@ import com.deck.notes.Utils.Helpers.Helpers;
 import com.deck.notes.Utils.Navigation.Navigation;
 
 public abstract class MasterActivity extends AppCompatActivity {
+
+    public ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +58,21 @@ public abstract class MasterActivity extends AppCompatActivity {
 
             if(showBackButton) {
 
+                if(toggle != null)
+                    this.toggle.setDrawerIndicatorEnabled(false);
+
                 actionBar.setDisplayHomeAsUpEnabled(true);
                 actionBar.setDisplayShowHomeEnabled(true);
-
+                
             }
 
             else {
 
                 actionBar.setDisplayHomeAsUpEnabled(false);
                 actionBar.setDisplayShowHomeEnabled(false);
+
+                if(toggle != null)
+                    this.toggle.setDrawerIndicatorEnabled(true);
 
             }
 

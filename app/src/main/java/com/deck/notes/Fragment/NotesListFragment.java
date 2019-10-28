@@ -301,40 +301,13 @@ public class NotesListFragment extends MasterFragment {
 
     }
 
-    private void setupMenuButton() {
-
-        SignInActivity activity = (SignInActivity) getActivity();
-
-        if(activity != null) {
-
-            Toolbar toolbar = activity.findViewById(R.id.activity_sign_in_toolbar);
-            DrawerLayout drawer = activity.findViewById(R.id.activity_sign_in);
-            NavigationView navigationView = activity.findViewById(R.id.nav_view);
-
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                    activity, drawer, toolbar,
-                    R.string.navigation_drawer_open, R.string.navigation_drawer_close
-            );
-
-            drawer.addDrawerListener(toggle);
-            toggle.syncState();
-            navigationView.setNavigationItemSelectedListener(activity);
-
-        }
-
-    }
-
     @Override
     public void setNavBar() {
 
         SignInActivity activity = (SignInActivity) getActivity();
 
-        if(activity != null) {
-
-            this.setupMenuButton();
+        if(activity != null)
             NavigationBar.setActionBar(activity, "Notas", false);
-
-        }
 
     }
 
