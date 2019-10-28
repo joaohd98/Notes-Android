@@ -13,21 +13,27 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.deck.yugioh.Activities.SignInActivity;
 import com.deck.yugioh.Adapters.NotesAdapter;
 import com.deck.yugioh.Components.Swipe.SwipeController;
 import com.deck.yugioh.Components.Swipe.SwipeControllerActions;
+import com.deck.yugioh.Fragment.Utils.MasterFragment;
 import com.deck.yugioh.HttpRequest.NotesAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestWithResponseCallback;
 import com.deck.yugioh.Model.Notes.NotesView;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.Navigation.Navigation;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -42,7 +48,7 @@ enum Status {
 
 }
 
-public class NotesListFragment extends Fragment {
+public class NotesListFragment extends MasterFragment {
 
     private FirebaseUser user;
     private ArrayList<NotesView> notes;
@@ -123,9 +129,9 @@ public class NotesListFragment extends Fragment {
 
         this.setFragmentStatus(Status.LOADING);
 
-        NotesAPI api = new NotesAPI();
+        NotesAPI api = new NotesAPI(user.getUid());
 
-        api.callRequest(user.getUid(), new RequestWithResponseCallback<ArrayList<NotesView>>() {
+        api.callRequest(null, new RequestWithResponseCallback<ArrayList<NotesView>>() {
             @Override
             public void success(ArrayList<NotesView> response) {
                 notes = response;
@@ -221,6 +227,26 @@ public class NotesListFragment extends Fragment {
         });
 
         this.setFragmentStatus(Status.SUCCESS);
+
+    }
+
+    @Override
+    public void setNavBar() {
+
+        SignInActivity activity = (SignInActivity) getActivity();
+
+        if(activity != null) {
+
+            Toolbar toolbar = activity.findViewById(R.id.activity_sign_in_toolbar);
+
+            DrawerLayout drawer = activity.findViewById(R.id.activity_sign_in);
+            NavigationView navigationView = activity.findViewById(R.id.nav_view);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(activity, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
+            navigationView.setNavigationItemSelectedListener(activity);
+
+        }
 
     }
 

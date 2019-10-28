@@ -3,21 +3,20 @@ package com.deck.yugioh.Activities;
 import android.os.Bundle;
 
 import com.deck.yugioh.Activities.Utils.MasterActivity;
+import com.deck.yugioh.Fragment.NotesFormFragment;
 import com.deck.yugioh.R;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 
-import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.deck.yugioh.Utils.Navigation.Navigation;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.Menu;
 
 public class SignInActivity extends MasterActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,15 +27,6 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
 
         Toolbar toolbar = findViewById(R.id.activity_sign_in_toolbar);
         setSupportActionBar(toolbar);
-
-
-        DrawerLayout drawer = findViewById(R.id.activity_sign_in);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
 
     }
 
@@ -51,31 +41,6 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
         else
             super.onBackPressed();
 
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater = getMenuInflater();
-
-        inflater.inflate(R.menu.add, menu);
-
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.action_add) {
-            return false;
-        }
-
-        return super.onOptionsItemSelected(item);
-
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -85,8 +50,10 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         if (id == R.id.nav_add) {
+            Navigation.push(this, new NotesFormFragment(), new Bundle(), R.id.activity_sign_in_fragment);
+        }
 
-        } else if (id == R.id.nav_out) {
+        else if (id == R.id.nav_out) {
 
         }
 

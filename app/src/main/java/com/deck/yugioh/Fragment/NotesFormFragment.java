@@ -147,16 +147,17 @@ public class NotesFormFragment extends MasterFragment {
 
                 loadingView.show();
 
+                final String uuid = FirebaseAuth.getInstance().getUid();
+
                 NotesView notesView = new NotesView(
                     "11",
                     inputTitle.getInputValue(),
                     inputMessage.getInputValue(),
                     Helpers.getCurrentDate(),
-                    FirebaseAuth.getInstance().getUid()
+                    uuid
                 );
 
-                NotesAddAPI api = new NotesAddAPI();
-
+                NotesAddAPI api = new NotesAddAPI(uuid);
 
                 api.callRequest(notesView, new RequestCallBack() {
 
@@ -171,7 +172,6 @@ public class NotesFormFragment extends MasterFragment {
 
                         if(activity != null)
                             Navigation.back(activity);
-
 
                     }
 

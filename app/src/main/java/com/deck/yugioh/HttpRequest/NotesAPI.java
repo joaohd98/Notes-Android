@@ -15,14 +15,20 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class NotesAPI implements RequestWithResponse<String, ArrayList<NotesView>> {
+public class NotesAPI implements RequestWithResponse<Object, ArrayList<NotesView>> {
 
-    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference("notes");
+    private DatabaseReference reference;
     private boolean internetConnection;
     private ValueEventListener listener;
 
+    public NotesAPI(String uuid) {
+
+        this.reference = FirebaseDatabase.getInstance().getReference().child(uuid).child("notes");
+
+    }
+
     @Override
-    public void callRequest(String object, final RequestWithResponseCallback<ArrayList<NotesView>> callback) {
+    public void callRequest(Object object, final RequestWithResponseCallback<ArrayList<NotesView>> callback) {
 
         this.internetConnection = false;
 
@@ -33,12 +39,12 @@ public class NotesAPI implements RequestWithResponse<String, ArrayList<NotesView
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                    internetConnection = true;
+
                     ArrayList<NotesView> list = new ArrayList<>();
 
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
                         list.add(postSnapshot.getValue(NotesView.class));
-
-                    internetConnection = true;
 
                     callback.success(list);
 
