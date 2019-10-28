@@ -2,9 +2,11 @@ package com.deck.yugioh.Fragment;
 
 
 import android.accounts.NetworkErrorException;
+import android.app.Activity;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +27,7 @@ import com.deck.yugioh.HttpRequest.NotesAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestWithResponseCallback;
 import com.deck.yugioh.Model.Notes.NotesView;
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.Navigation.Navigation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -156,7 +160,28 @@ public class NotesListFragment extends Fragment {
     private void setupRecyclerView() {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        RecyclerView.Adapter adapter = new NotesAdapter(this.notes, getContext());
+
+        RecyclerView.Adapter adapter = new NotesAdapter(this.notes, getContext(), new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int itemPosition = list.getChildLayoutPosition(view);
+                NotesView notesView = notes.get(itemPosition);
+
+                Bundle bundle = new Bundle();
+
+                bundle.putString(getString(R.string.fragment_show_notes_bundle_title), notesView.getTitle());
+                bundle.putString(getString(R.string.fragment_show_notes_bundle_date), notesView.getDate());
+                bundle.putString(getString(R.string.fragment_show_notes_bundle_message), notesView.getMessage());
+
+                FragmentActivity activity = getActivity();
+
+                if(activity != null)
+                    Navigation.push(activity, new NotesShowFragment(), bundle, R.id.activity_sign_in_fragment);
+
+            }
+
+        });
 
         /*
          * SET LAYOUT MANAGER
@@ -167,6 +192,7 @@ public class NotesListFragment extends Fragment {
          * SET ADAPTER
          */
         this.list.setAdapter(adapter);
+
 
         /*
          * SET SWIPE CONTROLLER

@@ -15,11 +15,15 @@ public class Navigation {
 
     public static void push(FragmentActivity activity, Fragment fragment, Bundle bundle, int id) {
 
-
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+
+        fragment.setArguments(bundle);
+
         transaction.replace(id, fragment);
         transaction.addToBackStack(fragment.toString());
+
         transaction.commit();
 
     }
