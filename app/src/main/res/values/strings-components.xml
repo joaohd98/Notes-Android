@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Loading View -->
-    <string name="component_loading_text">Carregando</string>
+    <string name="component_loading_text">Carregando…</string>
 
     <!-- INPUT -->
     <string name="component_input_label">label</string>
