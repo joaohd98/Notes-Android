@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.deck.yugioh.HttpRequest.Utils.Request;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
+import com.deck.yugioh.Model.Notes.NotesEditView;
 import com.deck.yugioh.Model.Notes.NotesView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class NotesEditAPI implements Request<NotesView> {
+public class NotesEditAPI implements Request<NotesEditView> {
 
     private DatabaseReference reference;
     private boolean internetConnection;
@@ -30,7 +31,7 @@ public class NotesEditAPI implements Request<NotesView> {
     }
 
     @Override
-    public void callRequest(final NotesView object, final RequestCallBack callback) {
+    public void callRequest(final NotesEditView object, final RequestCallBack callback) {
 
         this.internetConnection = false;
 
@@ -45,10 +46,10 @@ public class NotesEditAPI implements Request<NotesView> {
 
                     ArrayList<NotesView> list = new ArrayList<>();
 
-                    list.add(object);
-
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
                         list.add(postSnapshot.getValue(NotesView.class));
+
+                    list.set(object.getPosition(), object.getNote());
 
                     reference.setValue(list, new DatabaseReference.CompletionListener() {
 

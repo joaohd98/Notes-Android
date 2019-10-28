@@ -194,6 +194,7 @@ public class InputView extends ConstraintLayout {
 
     public void setInputValue(String value) {
         this.input.setText(value);
+        checkValidation();
     }
 
     public boolean isValid() {

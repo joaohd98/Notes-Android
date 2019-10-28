@@ -2,7 +2,6 @@ package com.deck.yugioh.Model.Notes;
 
 public class NotesView {
 
-    private String id;
     private String title;
     private String message;
     private String date;
@@ -10,20 +9,11 @@ public class NotesView {
 
     public NotesView() { }
 
-    public NotesView(String id, String title, String message, String date, String createdBy) {
-        this.id = id;
+    public NotesView(String title, String message, String date, String createdBy) {
         this.title = title;
         this.message = message;
         this.date = date;
         this.createdBy = createdBy;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getTitle() {

@@ -23,8 +23,10 @@ import com.deck.yugioh.Components.LoadingView;
 import com.deck.yugioh.Fragment.Utils.MasterFragment;
 import com.deck.yugioh.HttpRequest.NotesAPI;
 import com.deck.yugioh.HttpRequest.NotesAddAPI;
+import com.deck.yugioh.HttpRequest.NotesEditAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.HttpRequest.Utils.RequestWithResponseCallback;
+import com.deck.yugioh.Model.Notes.NotesEditView;
 import com.deck.yugioh.Model.Notes.NotesView;
 import com.deck.yugioh.R;
 import com.deck.yugioh.Utils.ActionBar.NavigationBar;
@@ -39,46 +41,31 @@ import java.util.ArrayList;
 
 public class NotesFormFragment extends MasterFragment {
 
-    private boolean isUpdate;
-    private String idNote;
+    private TextView txtTitle;
     private LoadingView loadingView;
 
     private InputView inputTitle;
     private InputView inputMessage;
     private Button btnSubmit;
 
+    private int position;
+    private boolean isUpdate;
 
     public NotesFormFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_notes_form, container, false);
 
         this.inputTitle = view.findViewById(R.id.fragment_form_notes_input_title);
         this.inputMessage = view.findViewById(R.id.fragment_form_notes_input_text);
 
+        this.txtTitle = view.findViewById(R.id.fragment_form_notes_title);
+
         this.btnSubmit = view.findViewById(R.id.fragment_form_notes_button);
 
         this.loadingView = view.findViewById(R.id.fragment_form_notes_loading);
-
-        Bundle bundle = this.getArguments();
-
-        if(bundle != null && bundle.getBoolean(getString(R.string.fragment_form_notes_bundle_is_updating))) {
-
-            TextView txtTitle = view.findViewById(R.id.fragment_form_notes_title);
-
-            txtTitle.setText(R.string.fragment_form_notes_title_edit);
-            this.btnSubmit.setText(R.string.fragment_form_notes_button_edit);
-
-            this.idNote = bundle.getString(getString(R.string.fragment_form_notes_bundle_id));
-            this.inputTitle.setInputValue(bundle.getString(getString(R.string.fragment_form_notes_bundle_title)));
-            this.inputMessage.setInputValue(bundle.getString(getString(R.string.fragment_form_notes_bundle_text)));
-
-            this.isUpdate = true;
-
-        }
 
         return view;
 
@@ -94,6 +81,22 @@ public class NotesFormFragment extends MasterFragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        Bundle bundle = this.getArguments();
+
+        if(bundle != null && bundle.getBoolean(getString(R.string.fragment_form_notes_bundle_is_updating))) {
+
+            this.txtTitle.setText(R.string.fragment_form_notes_title_edit);
+            this.btnSubmit.setText(R.string.fragment_form_notes_button_edit);
+
+            this.position = bundle.getInt(getString(R.string.fragment_form_notes_bundle_position));
+            this.inputTitle.setInputValue(bundle.getString(getString(R.string.fragment_form_notes_bundle_title)));
+            this.inputMessage.setInputValue(bundle.getString(getString(R.string.fragment_form_notes_bundle_text)));
+
+            this.isUpdate = true;
+
+        }
+
 
         this.setTitleField();
         this.setTextField();
@@ -166,11 +169,10 @@ public class NotesFormFragment extends MasterFragment {
                 final String uuid = FirebaseAuth.getInstance().getUid();
 
                 NotesView notesView = new NotesView(
-                        "11",
-                        inputTitle.getInputValue(),
-                        inputMessage.getInputValue(),
-                        Helpers.getCurrentDate(),
-                        uuid
+                    inputTitle.getInputValue(),
+                    inputMessage.getInputValue(),
+                    Helpers.getCurrentDate(),
+                    uuid
                 );
 
                 NotesAddAPI api = new NotesAddAPI(uuid);
@@ -238,6 +240,74 @@ public class NotesFormFragment extends MasterFragment {
             @Override
             public void onClick(View view) {
 
+                loadingView.show();
+
+                final String uuid = FirebaseAuth.getInstance().getUid();
+
+                NotesView notesView = new NotesView(
+                        inputTitle.getInputValue(),
+                        inputMessage.getInputValue(),
+                        Helpers.getCurrentDate(),
+                        uuid
+                );
+
+                NotesEditView editView = new NotesEditView(position, notesView);
+
+                NotesEditAPI api = new NotesEditAPI(uuid);
+
+                api.callRequest(editView, new RequestCallBack() {
+
+                    @Override
+                    public void success() {
+
+                        loadingView.hide();
+
+                        Toast.makeText(getContext(), R.string.fragment_form_notes_alert_message_edit_success, Toast.LENGTH_SHORT).show();
+
+                        FragmentActivity activity = getActivity();
+
+                        if (activity != null)
+                            Navigation.back(activity);
+
+                    }
+
+                    @Override
+                    public void error(Exception exception) {
+
+                        loadingView.hide();
+
+                        Context context = getContext();
+
+                        if (context != null) {
+
+                            DialogView dialog = new DialogView(getContext());
+
+                            dialog.setTitle(context.getString(R.string.fragment_form_notes_alert_title));
+
+                            try {
+
+                                throw exception;
+
+                            } catch (NetworkErrorException ignore) {
+
+                                dialog.setInfo(context.getString(R.string.fragment_form_notes_alert_message_no_internet));
+
+
+                            } catch (Exception ignore) {
+
+                                dialog.setInfo(context.getString(R.string.fragment_form_notes_alert_message_generic));
+
+                            }
+
+                            dialog.setBtnSuccess(context.getString(R.string.fragment_form_notes_alert_button));
+
+                            dialog.show();
+
+                        }
+
+                    }
+
+                });
             }
         };
 

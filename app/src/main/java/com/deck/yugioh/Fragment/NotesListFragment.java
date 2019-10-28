@@ -274,7 +274,7 @@ public class NotesListFragment extends MasterFragment {
                 Bundle bundle = new Bundle();
 
                 bundle.putBoolean(getString(R.string.fragment_form_notes_bundle_is_updating), true);
-                bundle.putString(getString(R.string.fragment_form_notes_bundle_id), note.getId());
+                bundle.putInt(getString(R.string.fragment_form_notes_bundle_position), position);
                 bundle.putString(getString(R.string.fragment_form_notes_bundle_title), note.getTitle());
                 bundle.putString(getString(R.string.fragment_form_notes_bundle_text), note.getMessage());
 

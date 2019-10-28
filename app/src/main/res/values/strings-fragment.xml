@@ -81,14 +81,14 @@
     <string name="fragment_form_notes_input_message_validation_required">Campo texto é obrigatório.</string>
     <string name="fragment_form_notes_alert_title">Atenção</string>
     <string name="fragment_form_notes_alert_message_add_success">Nota adicionada com sucesso.</string>
-    <string name="fragment_form_notes_alert_message_edit_success">Nota adicionada com sucesso.</string>
+    <string name="fragment_form_notes_alert_message_edit_success">Nota atualizada com sucesso.</string>
     <string name="fragment_form_notes_alert_message_no_internet">Sem conexão com a internet.</string>
     <string name="fragment_form_notes_alert_message_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
     <string name="fragment_form_notes_alert_button">OK</string>
     <string name="fragment_form_notes_button_add">Adicionar Nota</string>
     <string name="fragment_form_notes_button_edit">Atualizar Nota</string>
     <string name="fragment_form_notes_bundle_is_updating">is_updating</string>
-    <string name="fragment_form_notes_bundle_id">id</string>
+    <string name="fragment_form_notes_bundle_position">position</string>
     <string name="fragment_form_notes_bundle_title">title</string>
     <string name="fragment_form_notes_bundle_text">text</string>
 
