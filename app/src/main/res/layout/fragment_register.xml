@@ -43,7 +43,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_register_title" />
 
-            <com.deck.yugioh.Components.InputView
+            <com.deck.notes.Components.InputView
                 android:id="@+id/fragment_register_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,9 +55,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_register_message">
 
-            </com.deck.yugioh.Components.InputView>
+            </com.deck.notes.Components.InputView>
 
-            <com.deck.yugioh.Components.InputView
+            <com.deck.notes.Components.InputView
                 android:id="@+id/fragment_register_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,9 +69,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_register_name">
 
-            </com.deck.yugioh.Components.InputView>
+            </com.deck.notes.Components.InputView>
 
-            <com.deck.yugioh.Components.InputView
+            <com.deck.notes.Components.InputView
                 android:id="@+id/fragment_register_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_register_email">
 
-            </com.deck.yugioh.Components.InputView>
+            </com.deck.notes.Components.InputView>
 
             <Button
                 android:id="@+id/fragment_register_btn"
@@ -102,7 +102,7 @@
 
     </ScrollView>
 
-    <com.deck.yugioh.Components.LoadingView
+    <com.deck.notes.Components.LoadingView
         android:id="@+id/fragment_register_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

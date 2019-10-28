@@ -24,7 +24,7 @@
 
         <fragment
             android:id="@+id/activity_sign_in_fragment"
-            android:name="com.deck.yugioh.Fragment.NotesListFragment"
+            android:name="com.deck.notes.Fragment.NotesListFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
