@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,10 +38,13 @@ enum Status {
 
 public class ListNotesFragment extends Fragment {
 
-    private Status status = Status.LOADING;
     private FirebaseUser user;
     private ArrayList<NotesView> notes;
     private RecyclerView list;
+
+    private ConstraintLayout notesLayout;
+    private ConstraintLayout loadingLayout;
+    private ConstraintLayout errorLayout;
 
     public ListNotesFragment() { }
 
@@ -51,15 +54,55 @@ public class ListNotesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list_notes, container, false);
 
         this.user = FirebaseAuth.getInstance().getCurrentUser();
-//        this.list = view.findViewById(R.id.fragment_list_notes_recycle_view);
 
-//        this.callNotes();
+        this.notesLayout = view.findViewById(R.id.fragment_list_notes);
+        this.errorLayout = view.findViewById(R.id.fragment_list_notes_error);
+        this.loadingLayout = view.findViewById(R.id.fragment_list_notes_loading);
+
+        this.list = view.findViewById(R.id.fragment_list_notes_recycle_view);
+
+        this.callNotes();
 
         return view;
 
     }
 
+    private void setFragmentStatus(Status status) {
+
+        if(status == Status.LOADING) {
+
+            this.notesLayout.setVisibility(View.INVISIBLE);
+            this.errorLayout.setVisibility(View.INVISIBLE);
+            this.loadingLayout.setVisibility(View.VISIBLE);
+
+        }
+
+        else if(status == Status.EMPTY) {
+
+
+        }
+
+        else if(status == Status.ERROR) {
+
+            this.notesLayout.setVisibility(View.INVISIBLE);
+            this.loadingLayout.setVisibility(View.INVISIBLE);
+            this.errorLayout.setVisibility(View.VISIBLE);
+
+        }
+
+        else if(status == Status.SUCCESS) {
+
+            this.loadingLayout.setVisibility(View.INVISIBLE);
+            this.errorLayout.setVisibility(View.INVISIBLE);
+            this.notesLayout.setVisibility(View.VISIBLE);
+
+        }
+
+    }
+
     private void callNotes() {
+
+        this.setFragmentStatus(Status.LOADING);
 
         NotesAPI api = new NotesAPI();
 
@@ -72,7 +115,7 @@ public class ListNotesFragment extends Fragment {
 
             @Override
             public void error() {
-                Toast.makeText(getContext(), "Erro", Toast.LENGTH_SHORT).show();
+                setFragmentStatus(Status.ERROR);
             }
 
         });
@@ -119,6 +162,9 @@ public class ListNotesFragment extends Fragment {
                 swipeController.onDraw(c);
             }
         });
+
+        this.setFragmentStatus(Status.SUCCESS);
+
     }
 
 }
