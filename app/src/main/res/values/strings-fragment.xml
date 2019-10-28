@@ -64,4 +64,8 @@
     <string name="fragment_list_notes_error_message_generic">Ocorreu um erro interno. Tente novamente mais tarde.</string>
     <string name="fragment_list_notes_error_button">Tentar Novamente</string>
 
+    <!-- Show Notes -->
+    <string name="fragment_show_notes_bundle_title">title</string>
+    <string name="fragment_show_notes_bundle_date">date</string>
+    <string name="fragment_show_notes_bundle_message">message</string>
 </resources>

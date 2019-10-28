@@ -21,7 +21,6 @@ import com.deck.yugioh.Adapters.NotesAdapter;
 import com.deck.yugioh.Components.Swipe.SwipeController;
 import com.deck.yugioh.Components.Swipe.SwipeControllerActions;
 import com.deck.yugioh.HttpRequest.NotesAPI;
-import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
 import com.deck.yugioh.HttpRequest.Utils.RequestWithResponseCallback;
 import com.deck.yugioh.Model.Notes.NotesView;
 import com.deck.yugioh.R;
@@ -39,7 +38,7 @@ enum Status {
 
 }
 
-public class ListNotesFragment extends Fragment {
+public class NotesListFragment extends Fragment {
 
     private FirebaseUser user;
     private ArrayList<NotesView> notes;
@@ -50,12 +49,12 @@ public class ListNotesFragment extends Fragment {
     private ConstraintLayout errorLayout;
     private TextView errorLayoutMessage;
 
-    public ListNotesFragment() { }
+    public NotesListFragment() { }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_list_notes, container, false);
+        View view = inflater.inflate(R.layout.fragment_notes_list, container, false);
 
         this.user = FirebaseAuth.getInstance().getCurrentUser();
 

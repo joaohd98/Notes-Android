@@ -30,7 +30,7 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.activity_sign_in);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -43,7 +43,7 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
     @Override
     public void onBackPressed() {
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.activity_sign_in);
 
         if (drawer.isDrawerOpen(GravityCompat.START))
             drawer.closeDrawer(GravityCompat.START);
@@ -90,7 +90,7 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
 
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.activity_sign_in);
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
