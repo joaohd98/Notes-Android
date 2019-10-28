@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,13 +17,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.deck.yugioh.Adapters.NotesAdapter;
 import com.deck.yugioh.Components.Swipe.SwipeController;
 import com.deck.yugioh.Components.Swipe.SwipeControllerActions;
+import com.deck.yugioh.HttpRequest.NotesAPI;
+import com.deck.yugioh.HttpRequest.Utils.RequestCallBack;
+import com.deck.yugioh.HttpRequest.Utils.RequestWithResponseCallback;
 import com.deck.yugioh.Model.Notes.NotesView;
 import com.deck.yugioh.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class ListNotesFragment extends Fragment {
 
+    private FirebaseUser user;
     private ArrayList<NotesView> notes;
     private RecyclerView list;
 
@@ -33,18 +42,32 @@ public class ListNotesFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_list_notes, container, false);
 
+        this.user = FirebaseAuth.getInstance().getCurrentUser();
+
         this.list = view.findViewById(R.id.fragment_list_notes_recycle_view);
 
-        this.notes = new ArrayList<>();
-
-        this.notes.add(new NotesView("1", "Titulo", "Mensagem", "11/12/2018"));
-        this.notes.add(new NotesView("2", "Titulo2", "Mensagem1", "04/01/2018"));
-        this.notes.add(new NotesView("3", "Titulo3", "Mensagem2", "01/11/2014"));
-
-        this.setupRecyclerView();
+        this.callNotes();
 
         return view;
 
+    }
+
+    private void callNotes() {
+
+        NotesAPI api = new NotesAPI();
+
+        api.callRequest(user.getUid(), new RequestWithResponseCallback<ArrayList<NotesView>>() {
+            @Override
+            public void success(ArrayList<NotesView> response) {
+                notes = response;
+                setupRecyclerView();
+            }
+
+            @Override
+            public void error() {
+                Toast.makeText(getContext(), "Erro", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

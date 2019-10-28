@@ -7,6 +7,8 @@ public class NotesView {
     private String message;
     private String date;
 
+    public NotesView() { }
+
     public NotesView(String id, String title, String message, String date) {
         this.id = id;
         this.title = title;
