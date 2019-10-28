@@ -8,15 +8,10 @@
             android:id="@+id/nav_add"
             android:icon="@drawable/ic_menu_add"
             android:title="@string/activity_sign_in_menu_add" />
+        <item
+            android:id="@+id/nav_out"
+            android:icon="@drawable/ic_menu_exit"
+            android:title="@string/activity_sign_in_menu_out" />
     </group>
-
-    <item android:title="@string/activity_sign_in_menu_line">
-        <menu>
-            <item
-                android:id="@+id/nav_out"
-                android:icon="@drawable/ic_menu_exit"
-                android:title="@string/activity_sign_in_menu_out" />
-        </menu>
-    </item>
 
 </menu>

@@ -29,6 +29,7 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
 
         Toolbar toolbar = findViewById(R.id.activity_sign_in_toolbar);
         setSupportActionBar(toolbar);
+        setNavBar(R.id.activity_sign_in_fragment);
 
     }
 

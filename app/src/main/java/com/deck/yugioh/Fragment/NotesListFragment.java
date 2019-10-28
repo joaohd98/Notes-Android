@@ -2,11 +2,9 @@ package com.deck.yugioh.Fragment;
 
 
 import android.accounts.NetworkErrorException;
-import android.app.Activity;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,7 +15,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,6 +29,7 @@ import com.deck.yugioh.HttpRequest.NotesAPI;
 import com.deck.yugioh.HttpRequest.Utils.RequestWithResponseCallback;
 import com.deck.yugioh.Model.Notes.NotesView;
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.ActionBar.NavigationBar;
 import com.deck.yugioh.Utils.Navigation.Navigation;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -230,6 +228,29 @@ public class NotesListFragment extends MasterFragment {
 
     }
 
+    private void setupMenuButton() {
+
+        SignInActivity activity = (SignInActivity) getActivity();
+
+        if(activity != null) {
+
+            Toolbar toolbar = activity.findViewById(R.id.activity_sign_in_toolbar);
+            DrawerLayout drawer = activity.findViewById(R.id.activity_sign_in);
+            NavigationView navigationView = activity.findViewById(R.id.nav_view);
+
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    activity, drawer, toolbar,
+                    R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            );
+
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
+            navigationView.setNavigationItemSelectedListener(activity);
+
+        }
+
+    }
+
     @Override
     public void setNavBar() {
 
@@ -237,14 +258,8 @@ public class NotesListFragment extends MasterFragment {
 
         if(activity != null) {
 
-            Toolbar toolbar = activity.findViewById(R.id.activity_sign_in_toolbar);
-
-            DrawerLayout drawer = activity.findViewById(R.id.activity_sign_in);
-            NavigationView navigationView = activity.findViewById(R.id.nav_view);
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(activity, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-            drawer.addDrawerListener(toggle);
-            toggle.syncState();
-            navigationView.setNavigationItemSelectedListener(activity);
+            this.setupMenuButton();
+            NavigationBar.setActionBar(activity, "Notas", false);
 
         }
 

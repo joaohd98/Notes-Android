@@ -11,13 +11,11 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.deck.yugioh.Fragment.Utils.MasterFragment;
 import com.deck.yugioh.R;
+import com.deck.yugioh.Utils.ActionBar.NavigationBar;
 
-public class NotesShowFragment extends Fragment {
-
-    private TextView txtTitle;
-    private TextView txtDate;
-    private TextView txtMessage;
+public class NotesShowFragment extends MasterFragment {
 
     public NotesShowFragment() { }
 
@@ -27,17 +25,17 @@ public class NotesShowFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_notes_show, container, false);
 
-        this.txtTitle = view.findViewById(R.id.fragment_show_notes_title);
-        this.txtDate = view.findViewById(R.id.fragment_show_notes_date);
-        this.txtMessage = view.findViewById(R.id.fragment_show_notes_message);
+        TextView txtTitle = view.findViewById(R.id.fragment_show_notes_title);
+        TextView txtDate = view.findViewById(R.id.fragment_show_notes_date);
+        TextView txtMessage = view.findViewById(R.id.fragment_show_notes_message);
 
         Bundle bundle = this.getArguments();
 
         if(bundle != null) {
 
-            this.txtTitle.setText(bundle.getString(getString(R.string.fragment_show_notes_bundle_title)));
-            this.txtDate.setText(bundle.getString(getString(R.string.fragment_show_notes_bundle_date)));
-            this.txtMessage.setText(bundle.getString(getString(R.string.fragment_show_notes_bundle_message)));
+            txtTitle.setText(bundle.getString(getString(R.string.fragment_show_notes_bundle_title)));
+            txtDate.setText(bundle.getString(getString(R.string.fragment_show_notes_bundle_date)));
+            txtMessage.setText(bundle.getString(getString(R.string.fragment_show_notes_bundle_message)));
 
         }
 
@@ -46,10 +44,9 @@ public class NotesShowFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void setNavBar() {
 
+        NavigationBar.setActionBar(getActivity(), "Nota", true);
 
     }
-
 }
