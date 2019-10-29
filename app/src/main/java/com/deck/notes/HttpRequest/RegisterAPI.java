@@ -28,9 +28,13 @@ public class RegisterAPI implements Request<RegisterRequestModel> {
 
                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(request.getName()).build();
 
-                    user.updateProfile(profileUpdates);
+                    user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            callBack.success();
+                        }
+                    });
 
-                    callBack.success();
 
                 }
 
