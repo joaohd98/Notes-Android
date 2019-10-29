@@ -12,10 +12,13 @@ import androidx.core.view.GravityCompat;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.HeaderViewListAdapter;
+import android.widget.TextView;
 
 import com.deck.notes.Utils.Navigation.Navigation;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -51,6 +54,21 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
         drawer.addDrawerListener(this.toggle);
         this.toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        View headerView =  navigationView.getHeaderView(0);
+
+        TextView headerName = headerView.findViewById(R.id.nav_header_name);
+        TextView headerEmail = headerView.findViewById(R.id.nav_header_email);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user != null) {
+
+            headerName.setText(user.getDisplayName());
+            headerEmail.setText(user.getEmail());
+
+        }
 
     }
 
