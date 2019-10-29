@@ -60,6 +60,7 @@ public class NotesListFragment extends MasterFragment {
     private ConstraintLayout notesLayout;
     private ConstraintLayout loadingLayout;
     private ConstraintLayout errorLayout;
+    private ConstraintLayout emptyLayout;
     private TextView errorLayoutMessage;
 
     public NotesListFragment() { }
@@ -74,6 +75,7 @@ public class NotesListFragment extends MasterFragment {
         this.notesLayout = view.findViewById(R.id.fragment_list_notes);
         this.errorLayout = view.findViewById(R.id.fragment_list_notes_error);
         this.loadingLayout = view.findViewById(R.id.fragment_list_notes_loading);
+        this.emptyLayout = view.findViewById(R.id.fragment_list_notes_empty);
 
         this.errorLayout = view.findViewById(R.id.fragment_list_notes_error);
         this.errorLayoutMessage = view.findViewById(R.id.fragment_list_notes_error_message);
@@ -89,6 +91,18 @@ public class NotesListFragment extends MasterFragment {
             }
         });
 
+        Button emptyLayoutButton = view.findViewById(R.id.fragment_list_notes_empty_button);
+
+        emptyLayoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentActivity activity = getActivity();
+
+                if(activity != null)
+                    Navigation.push(activity, new NotesFormFragment(), new Bundle(), R.id.activity_sign_in_fragment);
+            }
+        });
+
         this.callNotes();
 
         return view;
@@ -99,6 +113,7 @@ public class NotesListFragment extends MasterFragment {
 
         if(status == Status.LOADING) {
 
+            this.emptyLayout.setVisibility(View.INVISIBLE);
             this.notesLayout.setVisibility(View.INVISIBLE);
             this.errorLayout.setVisibility(View.INVISIBLE);
             this.loadingLayout.setVisibility(View.VISIBLE);
@@ -107,11 +122,16 @@ public class NotesListFragment extends MasterFragment {
 
         else if(status == Status.EMPTY) {
 
+            this.errorLayout.setVisibility(View.INVISIBLE);
+            this.notesLayout.setVisibility(View.INVISIBLE);
+            this.loadingLayout.setVisibility(View.INVISIBLE);
+            this.emptyLayout.setVisibility(View.VISIBLE);
 
         }
 
         else if(status == Status.ERROR) {
 
+            this.emptyLayout.setVisibility(View.INVISIBLE);
             this.notesLayout.setVisibility(View.INVISIBLE);
             this.loadingLayout.setVisibility(View.INVISIBLE);
             this.errorLayout.setVisibility(View.VISIBLE);
@@ -120,6 +140,7 @@ public class NotesListFragment extends MasterFragment {
 
         else if(status == Status.SUCCESS) {
 
+            this.emptyLayout.setVisibility(View.INVISIBLE);
             this.loadingLayout.setVisibility(View.INVISIBLE);
             this.errorLayout.setVisibility(View.INVISIBLE);
             this.notesLayout.setVisibility(View.VISIBLE);
@@ -138,7 +159,12 @@ public class NotesListFragment extends MasterFragment {
             @Override
             public void success(ArrayList<NotesView> response) {
                 notes = response;
-                setupRecyclerView();
+
+                if(notes.size() == 0)
+                    setFragmentStatus(Status.EMPTY);
+
+                else
+                    setupRecyclerView();
             }
 
             @Override
