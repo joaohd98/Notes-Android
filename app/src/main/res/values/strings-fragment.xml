@@ -1,7 +1,6 @@
 <resources>
 
     <!-- LOGIN -->
-    <string name="fragment_login_image">Logo Image</string>
     <string name="fragment_login_title">Bem vindo ao Notas</string>
     <string name="fragment_login_email_label">Email</string>
     <string name="fragment_login_email_placeholder">Digite o seu email</string>

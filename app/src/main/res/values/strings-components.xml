@@ -4,9 +4,5 @@
     <string name="component_loading_text">Carregando…</string>
 
     <!-- INPUT -->
-    <string name="component_input_label">label</string>
-    <string name="component_input_placeholder">placeholder</string>
-    <string name="component_input_type">type</string>
-    <string name="component_input_rules">rules</string>
 
 </resources>
