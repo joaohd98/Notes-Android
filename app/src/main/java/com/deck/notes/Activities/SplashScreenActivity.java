@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.deck.notes.R;
+import com.deck.notes.Utils.Navigation.Navigation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,23 +26,9 @@ public class SplashScreenActivity extends Activity {
         new android.os.Handler().postDelayed(new Runnable() {
             public void run() {
 
-                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                Intent intent;
-
-                if(user == null)
-                    intent = new Intent(activity, GuestActivity.class);
-
-                else
-                    intent = new Intent(activity, SignInActivity.class);
-
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
+                Navigation.setActivity(activity, user != null ? SignInActivity.class : GuestActivity.class, false);
 
             }
         }, 2000);

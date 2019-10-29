@@ -190,7 +190,7 @@ public class LoginFragment extends MasterFragment {
 
                 loadingView.hide();
 
-                Navigation.setActivity(getActivity(), SignInActivity.class);
+                Navigation.setActivity(getActivity(), SignInActivity.class, true);
 
             }
 

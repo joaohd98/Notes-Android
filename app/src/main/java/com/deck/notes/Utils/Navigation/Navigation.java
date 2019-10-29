@@ -36,13 +36,17 @@ public class Navigation {
 
     }
 
-    public static void setActivity(Activity activity, Class c) {
+    public static void setActivity(Activity activity, Class c, boolean animation) {
 
         if(activity != null) {
 
             Intent intent = new Intent(activity, c);
 
             activity.startActivity(intent);
+
+            if(!animation)
+                activity.overridePendingTransition(0, 0);
+
             activity.finish();
 
         }

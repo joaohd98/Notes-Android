@@ -108,7 +108,7 @@ public class SignInActivity extends MasterActivity implements NavigationView.OnN
         else if (id == R.id.nav_out) {
 
             FirebaseAuth.getInstance().signOut();
-            Navigation.setActivity(this, GuestActivity.class);
+            Navigation.setActivity(this, GuestActivity.class, true);
 
         }
 

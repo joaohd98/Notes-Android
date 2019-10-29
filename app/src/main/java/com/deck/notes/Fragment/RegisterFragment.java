@@ -167,7 +167,7 @@ public class RegisterFragment extends MasterFragment {
 
                         loadingView.hide();
 
-                        Navigation.setActivity(getActivity(), SignInActivity.class);
+                        Navigation.setActivity(getActivity(), SignInActivity.class, true);
 
                     }
 
