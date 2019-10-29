@@ -83,7 +83,7 @@ public abstract class MasterActivity extends AppCompatActivity {
                 actionBar.setDisplayShowHomeEnabled(false);
 
                 if(toggle != null) {
-                    
+
                     this.toggle.setDrawerIndicatorEnabled(true);
 
                     this.toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
